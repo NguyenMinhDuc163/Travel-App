@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void redirectIntroScreen() async{
     // man hinh nay chi xuat hien trong lan khoi dong dau tien
     final ignoreIntroScreen = LocalStorageHelper.getValue('ignoreIntroScreen') as bool?;
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     if(ignoreIntroScreen != null && ignoreIntroScreen){
       Navigator.of(context).pushNamed(MainApp.routeName);
     }

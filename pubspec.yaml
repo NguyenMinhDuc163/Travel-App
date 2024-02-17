@@ -39,6 +39,7 @@ dependencies:
   hive_flutter: ^1.1.0
   salomon_bottom_bar: ^3.3.2
   font_awesome_flutter: ^10.7.0
+  syncfusion_flutter_datepicker: ^24.2.6
 
 dev_dependencies:
   flutter_test:
