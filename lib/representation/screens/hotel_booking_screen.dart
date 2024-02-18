@@ -3,6 +3,7 @@ import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/extentions/date_ext.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/representation/screens/guest_and_room_booking_screen.dart';
+import 'package:travel_app/representation/screens/hotels_screen.dart';
 import 'package:travel_app/representation/screens/select_date_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
@@ -47,7 +48,9 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
             }),
 
             SizedBox(height: kMediumPadding,),
-            ButtonWidget(title: "Search", ontap: (){},)
+            ButtonWidget(title: "Search", ontap: (){
+              Navigator.of(context).pushNamed(HotelsScreen.routeName);
+            },)
           ],
         ),
       ),
