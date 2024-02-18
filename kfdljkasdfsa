@@ -1,0 +1,47 @@
+[33mcommit d2a38663e752accb1253ba9b7c818ea75cc46a52[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Sun Feb 18 18:44:16 2024 +0700
+
+    create hotel detail screen
+
+[33mcommit d61a539e01193a145507a444a3324c1d2f505fc4[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Sun Feb 18 18:15:53 2024 +0700
+
+    create hotels sreen + itemHotelWiget
+
+[33mcommit d62edf0e625afd2d4e5485c949a19f857209bc97[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Sat Feb 17 23:23:59 2024 +0700
+
+    create screen guest and room
+
+[33mcommit 7e7e7f9f039f6849096dbc336896373ff4bd33d1[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Sat Feb 17 22:46:32 2024 +0700
+
+    create hotel screen, selectdate sceen
+
+[33mcommit 9eca201701da7b929a19c6d27d1b938f7d086511[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Sat Feb 17 00:04:02 2024 +0700
+
+    create howm screen
+
+[33mcommit 115904b2dcb6c730e0386e0db5c6420fd64ac790[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Fri Feb 16 22:20:33 2024 +0700
+
+    create splat intro + bottom bar
+
+[33mcommit e9f556ee94bb4bdd8ee7e76c89011c85dceb1dfd[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Thu Feb 15 16:10:27 2024 +0700
+
+    init project
+
+[33mcommit 134e09f5148b1840c671fcdf6b386ea2f6737a30[m
+Author: Nguyen Duc <DucNM.B21CN249@stu.ptit.edu.vn>
+Date:   Thu Feb 15 15:49:04 2024 +0700
+
+    first commit

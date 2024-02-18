@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: routes, // biet routes nam o dau
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: generateRoutes,
     );
   }
 }

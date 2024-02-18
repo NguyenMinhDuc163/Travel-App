@@ -88,8 +88,8 @@ class ItemHotelWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start
-                        ,children: [
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
                             '\$${hotelModel.price}',
                             style: TextStyle(
@@ -107,7 +107,9 @@ class ItemHotelWidget extends StatelessWidget {
                       child: ButtonWidget(
                         title: "Book a room",
                         ontap: () {
-                          Navigator.of(context).pushNamed(HotelDetailScreen.routeName);
+                          Navigator.of(context).pushNamed(
+                              HotelDetailScreen.routeName,
+                              arguments: hotelModel);
                         },
                       ),
                     ),

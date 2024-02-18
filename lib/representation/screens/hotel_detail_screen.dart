@@ -1,13 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_app/core/constants/dimension_constants.dart';
-import 'package:travel_app/core/helpers/asset_helper.dart';
-import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/core/constants/color_constants.dart';
+import 'package:travel_app/representation/screens/select_room_screen.dart';
+import 'package:travel_app/representation/widgets/buttom_widget.dart';
 
-class HotelDetailScreen extends StatelessWidget {
-  const HotelDetailScreen({super.key});
-  static const String routeName = 'hotel_detail_screen';
+import '../../core/constants/dimension_constants.dart';
+import '../../core/constants/textstyle_ext.dart';
+import '../../core/helpers/asset_helper.dart';
+import '../../core/helpers/image_helper.dart';
+import '../../data/models/hotel_model.dart';
 
+class HotelDetailScreen extends StatefulWidget {
+  static const String routeName = '/detail_hotel_screen';
+
+  const HotelDetailScreen({
+    Key? key,
+    required this.hotelModel,
+  }) : super(key: key);
+
+  final HotelModel hotelModel;
+  @override
+  State<HotelDetailScreen> createState() => _HotelDetailScreenState();
+}
+
+class _HotelDetailScreenState extends State<HotelDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,25 +35,25 @@ class HotelDetailScreen extends StatelessWidget {
                 fit: BoxFit.fill),
           ),
           Positioned(
-            top: kMediumPadding * 3,
+              top: kMediumPadding * 3,
               left: kMediumPadding,
               child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              padding: EdgeInsets.all(kItemPadding),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(kDefaultPadding)),
-                color: Colors.white,
-              ),
-              child: Icon(
-                FontAwesomeIcons.arrowLeft,
-                size: 18,
-              ),
-            ),
-          )),
-
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(kItemPadding),
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(kDefaultPadding)),
+                    color: Colors.white,
+                  ),
+                  child: Icon(
+                    FontAwesomeIcons.arrowLeft,
+                    size: 18,
+                  ),
+                ),
+              )),
           Positioned(
               top: kMediumPadding * 3,
               right: kMediumPadding,
@@ -45,7 +62,8 @@ class HotelDetailScreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(kItemPadding),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(kDefaultPadding)),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(kDefaultPadding)),
                     color: Colors.white,
                   ),
                   child: Icon(
@@ -91,6 +109,101 @@ class HotelDetailScreen extends StatelessWidget {
                     Expanded(
                       child: ListView(
                         controller: scrollController,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                widget.hotelModel.hotelName,
+                                style: TextStyles.defaultStyle.fontHeader.bold,
+                              ),
+                              Spacer(),
+                              Text(
+                                '\$${widget.hotelModel.price.toString()}',
+                                style: TextStyles.defaultStyle.fontHeader.bold,
+                              ),
+                              Text(
+                                ' /night',
+                                style: TextStyles.defaultStyle.fontCaption,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          Row(
+                            children: [
+                              ImageHelper.loadFromAsset(
+                                  AssetHelper.icoLocationBlank),
+                              SizedBox(
+                                width: kMinPadding,
+                              ),
+                              Text(
+                                widget.hotelModel.location,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          Row(
+                            children: [
+                              ImageHelper.loadFromAsset(AssetHelper.icoStar),
+                              SizedBox(
+                                width: kMinPadding,
+                              ),
+                              Text(
+                                '${widget.hotelModel.star}/5',
+                              ),
+                              Text(
+                                ' (${widget.hotelModel.numberOfReview})',
+                                style: TextStyle(
+                                    color: ColorPalette.subTitleColor),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          Text(
+                            'Infomation',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          Text(
+                            '''You will find every comfort because many of the services that the hotel offers for travellers and of course the hotel is very comfortable.''',
+                            style: TextStyle(fontWeight: FontWeight.w300),
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          Text(
+                            'Location',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          Text(
+                            '''Located in the famous neighborhood of Seoul, Grand Luxury’s is set in a building built in the 2010s.''',
+                            style: TextStyle(fontWeight: FontWeight.w300),
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+                          ImageHelper.loadFromAsset(AssetHelper.imageMap),
+                          SizedBox(
+                            height: kDefaultPadding * 2,
+                          ),
+                          ButtonWidget(
+                            title: 'Select Room',
+                            ontap: () {
+                              Navigator.of(context)
+                                  .pushNamed(SelectRoomScreen.routeName);
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -101,5 +214,6 @@ class HotelDetailScreen extends StatelessWidget {
         ],
       ),
     );
+    ;
   }
 }
