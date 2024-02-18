@@ -7,6 +7,7 @@ import 'package:travel_app/representation/widgets/buttom_widget.dart';
 import 'package:travel_app/representation/widgets/dashline_widge.dart';
 
 import '../../data/models/hotel_model.dart';
+import '../screens/hotel_detail_screen.dart';
 
 class ItemHotelWidget extends StatelessWidget {
   const ItemHotelWidget({super.key, required this.hotelModel});
@@ -105,7 +106,9 @@ class ItemHotelWidget extends StatelessWidget {
                     Expanded(
                       child: ButtonWidget(
                         title: "Book a room",
-                        ontap: () {},
+                        ontap: () {
+                          Navigator.of(context).pushNamed(HotelDetailScreen.routeName);
+                        },
                       ),
                     ),
                   ],
