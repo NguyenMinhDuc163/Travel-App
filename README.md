@@ -15,24 +15,24 @@ Travel App là một ứng dụng giúp người dùng dễ dàng tìm kiếm v�
 ## Giao Diện
 
 ## Splashscreen
-![Splashscreen](test/image/Splashscreen Copy.png)
+![Splashscreen](test/image/Splashscreen.png)
 
 ## Onboarding
-![Onboarding](link_tới_ảnh_onboarding)
+![Onboarding](test/image/Onboarding1.png)
 
 ## Home
-![Home](link_tới_ảnh_home)
+![Home](test/image/Home.png)
 
 ## Select Room
-![Select Room](link_tới_ảnh_select_room)
+![Select Room](test/image/Select Room.png)
 
 ## Checkout Hotel
-![Checkout Hotel](link_tới_ảnh_checkout_hotel)
+![Checkout Hotel](test/image/Checkkout_hotel.png)
 
 ## Guest and Room
-![Guest and Room](link_tới_ảnh_guest_and_room)
+![Guest and Room](test/image/Guest_and_room.png)
 
 ## Booking Hotel
-![Booking Hotel](link_tới_ảnh_booking_hotel)
+![Booking Hotel](test/image/Booking_hotel.png)
 
 ...
