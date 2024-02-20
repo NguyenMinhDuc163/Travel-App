@@ -52,6 +52,7 @@ class SelectDateScreen extends StatelessWidget {
             ontap: (){
               Navigator.of(context).pop([null]);
             },
+            opacity: ColorPalette.primaryColor.withOpacity(0.1),
           ),
         ],
       ),

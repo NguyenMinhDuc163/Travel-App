@@ -15,16 +15,16 @@ import 'package:travel_app/representation/screens/splash_screen.dart';
 
 import 'data/models/hotel_model.dart';
 
-final Map<String, WidgetBuilder> routes = { // noi tong hop ca routes
+final Map<String, WidgetBuilder> routes = {
+  // noi tong hop ca routes
   SplashScreen.routeName: (context) => const SplashScreen(),
   IntroScreen.routeName: (context) => const IntroScreen(),
   MainApp.routeName: (context) => const MainApp(),
   HotelScreen.routeName: (context) => const HotelScreen(),
-  HotelBookingScreen.routeName: (context) => HotelBookingScreen(),
-  SelectDateScreen.routeName: (context) =>  SelectDateScreen(),
-  GuestAndRoomBookingScreen.routeName: (context) =>  GuestAndRoomBookingScreen(),
-  HotelsScreen.routeName: (context) =>  HotelsScreen(),
-  SelectRoomScreen.routeName: (context) =>  SelectRoomScreen(),
+  SelectDateScreen.routeName: (context) => SelectDateScreen(),
+  GuestAndRoomBookingScreen.routeName: (context) => GuestAndRoomBookingScreen(),
+  HotelsScreen.routeName: (context) => HotelsScreen(),
+  SelectRoomScreen.routeName: (context) => SelectRoomScreen(),
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
@@ -33,20 +33,26 @@ MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
       final HotelModel hotelModel = (settings.arguments as HotelModel);
       return MaterialPageRoute<dynamic>(
         settings: settings,
-        builder: (context) =>
-            HotelDetailScreen(
-              hotelModel: hotelModel,
-            ),
+        builder: (context) => HotelDetailScreen(
+          hotelModel: hotelModel,
+        ),
       );
 
     case CheckOutScreen.routeName:
       final RoomModel roomModel = (settings.arguments as RoomModel);
       return MaterialPageRoute<dynamic>(
         settings: settings,
-        builder: (context) =>
-            CheckOutScreen(
-              roomModel: roomModel,
-            ),
+        builder: (context) => CheckOutScreen(
+          roomModel: roomModel,
+        ),
       );
+
+    case HotelBookingScreen.routeName:
+      return MaterialPageRoute<dynamic>(builder: (context) {
+        final String? nameDestination = (settings.arguments as String?);
+        return HotelBookingScreen(
+          nameDestination: nameDestination,
+        );
+      });
   }
 }

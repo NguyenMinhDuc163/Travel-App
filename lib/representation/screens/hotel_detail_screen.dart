@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/color_constants.dart';
 import 'package:travel_app/representation/screens/select_room_screen.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
+import 'package:travel_app/representation/widgets/item_utility_widge.dart';
 
 import '../../core/constants/dimension_constants.dart';
 import '../../core/constants/textstyle_ext.dart';
@@ -175,6 +176,12 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                             '''You will find every comfort because many of the services that the hotel offers for travellers and of course the hotel is very comfortable.''',
                             style: TextStyle(fontWeight: FontWeight.w300),
                           ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
+
+                          ItemUtilityWidge(),
+
                           SizedBox(
                             height: kDefaultPadding,
                           ),
