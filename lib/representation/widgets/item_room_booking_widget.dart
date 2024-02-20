@@ -13,12 +13,16 @@ class ItemRoomBookingwidge extends StatelessWidget {
       required this.roomName,
       required this.roomPrice,
       required this.roomUtility,
-      required this.roomSize});
+      required this.roomSize,
+      this.onTap,
+      required this.numberOfRoom});
   final String roomImage;
   final String roomName;
-  final String roomPrice;
+  final int roomPrice;
   final String roomUtility;
   final int roomSize;
+  final int? numberOfRoom;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,10 +34,15 @@ class ItemRoomBookingwidge extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(roomName),
+                  Text(
+                    roomName,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   SizedBox(
                     height: kMinPadding,
                   ),
@@ -47,7 +56,8 @@ class ItemRoomBookingwidge extends StatelessWidget {
               SizedBox(
                 width: kDefaultPadding,
               ),
-              ImageHelper.loadFromAsset(roomImage, radius: BorderRadius.all(Radius.circular(kMinPadding)))
+              ImageHelper.loadFromAsset(roomImage,
+                  radius: BorderRadius.all(Radius.circular(kMinPadding)))
             ],
           ),
           ItemUtilityWidge(),
@@ -73,13 +83,14 @@ class ItemRoomBookingwidge extends StatelessWidget {
                   ],
                 ),
               ),
+              if(numberOfRoom != null)SizedBox(width: kMediumPadding * 6,),
               Expanded(
-                child: ButtonWidget(
-                  title: "Book a room",
-                  ontap: () {
-
-                  },
-                ),
+                child: numberOfRoom == null
+                    ? ButtonWidget(
+                        title: "Book a room",
+                        ontap: onTap,
+                      )
+                    : Text('$numberOfRoom room'),
               ),
             ],
           ),

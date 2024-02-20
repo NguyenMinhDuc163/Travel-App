@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_app/data/models/room_model.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
 import 'package:travel_app/representation/screens/guest_and_room_booking_screen.dart';
 import 'package:travel_app/representation/screens/hotel_booking_screen.dart';
@@ -24,7 +25,6 @@ final Map<String, WidgetBuilder> routes = { // noi tong hop ca routes
   GuestAndRoomBookingScreen.routeName: (context) =>  GuestAndRoomBookingScreen(),
   HotelsScreen.routeName: (context) =>  HotelsScreen(),
   SelectRoomScreen.routeName: (context) =>  SelectRoomScreen(),
-  CheckOutScreen.routeName: (context) =>  CheckOutScreen(),
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
@@ -36,6 +36,16 @@ MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
         builder: (context) =>
             HotelDetailScreen(
               hotelModel: hotelModel,
+            ),
+      );
+
+    case CheckOutScreen.routeName:
+      final RoomModel roomModel = (settings.arguments as RoomModel);
+      return MaterialPageRoute<dynamic>(
+        settings: settings,
+        builder: (context) =>
+            CheckOutScreen(
+              roomModel: roomModel,
             ),
       );
   }

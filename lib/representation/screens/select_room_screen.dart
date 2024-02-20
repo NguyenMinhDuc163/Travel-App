@@ -5,6 +5,7 @@ import '../../core/helpers/asset_helper.dart';
 import '../../data/models/room_model.dart';
 import '../widgets/app_bar_container.dart';
 import '../widgets/item_room_booking_widget.dart';
+import 'check_out_screen.dart';
 
 class SelectRoomScreen extends StatefulWidget {
   const SelectRoomScreen({super.key});
@@ -48,28 +49,19 @@ class _SelectRoomScreenState extends State<SelectRoomScreen> {
             SizedBox(
               height: kMediumPadding * 2,
             ),
-            ItemRoomBookingwidge(
-              roomImage: AssetHelper.icoHotelPlane,
-              roomName: 'Deluxe Room',
-              roomPrice: '245\$',
-              roomUtility: 'Free Cancellation',
-              roomSize: 27,
-            ),
-
-            ItemRoomBookingwidge(
-              roomImage: AssetHelper.room2,
-              roomName: 'Executive Suite',
-              roomSize: 32,
-              roomUtility: 'Non-refundable',
-              roomPrice: '289\$',
-            ),
-            ItemRoomBookingwidge(
-              roomImage: AssetHelper.room3,
-              roomName: 'King Bed Only Room',
-              roomSize: 24,
-              roomUtility: 'Non-refundable',
-              roomPrice: '\$',
-            ),
+            ...listRoom.map((e) => Padding(
+              padding: EdgeInsets.only(bottom: kMediumPadding),
+              child: ItemRoomBookingwidge( // dua thang cai list ra
+                    roomImage: e.roomImage,
+                    roomName: e.roomName,
+                    roomPrice: e.price,
+                    roomUtility: e.utility,
+                    roomSize: e.size,
+                    onTap: () {
+                      Navigator.of(context).pushNamed(CheckOutScreen.routeName, arguments: e);
+                    }, numberOfRoom: null,
+                  ),
+            ))
           ],
         ),
       ),
