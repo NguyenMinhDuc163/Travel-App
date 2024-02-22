@@ -28,11 +28,13 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     'Confirm',
   ];
 
-
-  Widget _buildItemOptionsCheckout(String icon, String title, String value, BuildContext context) {
+  Widget _buildItemOptionsCheckout(
+      String icon, String title, String value, BuildContext context) {
     return Container(
       padding: EdgeInsets.all(kDefaultPadding),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(kDefaultPadding)),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(kDefaultPadding)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -145,16 +147,18 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           Row(
             children: listSteps
                 .map((e) => _buildItemStepCheckOut(
-                listSteps.indexOf(e) + 1,
-                e,
-                listSteps.indexOf(e) == listSteps.length - 1,
-                listSteps.indexOf(e) == 0))
+                    listSteps.indexOf(e) + 1,
+                    e,
+                    listSteps.indexOf(e) == listSteps.length - 1,
+                    listSteps.indexOf(e) == 0))
                 .toList(),
           ),
           SizedBox(
             height: kDefaultPadding,
           ),
-          Expanded(child: SingleChildScrollView( // nhu the nay se co dinh thanh tabar
+          Expanded(
+              child: SingleChildScrollView(
+            // nhu the nay se co dinh thanh tabar
             child: Column(
               children: [
                 ItemRoomBookingwidge(
@@ -163,30 +167,35 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   roomPrice: widget.roomModel.price,
                   roomUtility: widget.roomModel.utility,
                   roomSize: widget.roomModel.size,
-                  onTap: () {}, numberOfRoom: 1,
+                  onTap: () {},
+                  numberOfRoom: 1,
                 ),
                 SizedBox(
                   height: kDefaultPadding,
                 ),
-
-                _buildItemOptionsCheckout(AssetHelper.icoUser, 'Contact detail', 'Add contact', context),
+                _buildItemOptionsCheckout(AssetHelper.icoUser, 'Contact detail',
+                    'Add contact', context),
                 SizedBox(
                   height: kDefaultPadding,
                 ),
-                _buildItemOptionsCheckout(AssetHelper.icoPromo, 'Promo code', 'Add promo code', context),
+                _buildItemOptionsCheckout(AssetHelper.icoPromo, 'Promo code',
+                    'Add promo code', context),
                 SizedBox(
                   height: kDefaultPadding,
                 ),
                 ButtonWidget(
                   title: 'Payment',
-                  ontap: (){
-                    Navigator.of(context).popUntil((route) => route.settings.name == MainApp.routeName);
+                  ontap: () {
+                    Navigator.of(context).popUntil(
+                        (route) => route.settings.name == MainApp.routeName);
                   },
+                ),
+                SizedBox(
+                  height: kDefaultPadding,
                 ),
               ],
             ),
           ))
-
         ],
       ),
     );

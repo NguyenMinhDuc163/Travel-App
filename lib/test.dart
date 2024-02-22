@@ -1,35 +1,83 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:travel_app/core/constants/dimension_constants.dart';
-// import 'package:travel_app/core/helpers/asset_helper.dart';
-// import 'package:travel_app/core/helpers/image_helper.dart';
-// import 'package:travel_app/representation/widgets/app_bar_container.dart';
-// import 'package:travel_app/representation/widgets/item_utility_widge.dart';
-//
-// import '../widgets/item_room_booking_widget.dart';
-//
-// class SelectRoomScreen extends StatelessWidget {
-//   const SelectRoomScreen({super.key});
-//   static const String routeName = '/select_room_screen';
-//   @override
-//   Widget build(BuildContext context) {
-//     return AppBarContinerWidget(
-//       titleString: "Select Room",
-//       child: SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             SizedBox(
-//               height: kMediumPadding * 2,
-//             ),
-//             ItemRoomBookingwidge(
-//               roomImage: AssetHelper.icoHotelPlane,
-//               roomName: 'Deluxe Room',
-//               roomPrice: '245\$',
-//               roomUtility: 'Free Cancellation',
-//               roomSize: 27,
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Text with Centered Lines Example'),
+        ),
+        body: Center(
+          child: MyText(),
+        ),
+      ),
+    );
+  }
+}
+
+class MyText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(color: Colors.black, fontSize: 16),
+        children: [
+          TextSpan(
+            text: 'By tapping sign up you agree to the ',
+          ),
+          TextSpan(
+            text: 'Terms and Conditions\n', // \n để xuống dòng
+            style: TextStyle(
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
+              fontWeight: FontWeight.bold,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                // Xử lý khi người dùng nhấp vào "Terms and Conditions"
+                print('Navigate to Terms and Conditions');
+              },
+          ),
+          TextSpan(
+            text: 'and\n', // \n để xuống dòng
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              fontStyle: FontStyle.italic,
+              letterSpacing: 1.5,
+              wordSpacing: 2.0,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                // Xử lý khi người dùng nhấp vào "and"
+                print('Navigate to "and"');
+              },
+          ),
+          TextSpan(
+            text: 'Privacy Policy\n', // \n để xuống dòng
+            style: TextStyle(
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
+              fontWeight: FontWeight.bold,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                // Xử lý khi người dùng nhấp vào "Privacy Policy"
+                print('Navigate to Privacy Policy');
+              },
+          ),
+          TextSpan(
+            text: 'of this app',
+          ),
+        ],
+      ),
+      textAlign: TextAlign.center, // Căn giữa dòng văn bản
+    );
+  }
+}

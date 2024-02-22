@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/representation/screens/sign_up_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
 
@@ -32,6 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
           TextField(
             style: TextStyle(fontSize: 18, color: Colors.black),
             decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 labelText: 'Email',
                 prefixIcon: Container(
                   width: 1,
@@ -48,6 +51,8 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(fontSize: 18, color: Colors.black),
             obscureText: true,
             decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 labelText: 'Password',
                 prefixIcon: Container(
                   width: 1,
@@ -110,7 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.of(context).pushNamed(MainApp.routeName);
             },
           ),
-          SizedBox(height: kDefaultPadding,),
+          SizedBox(
+            height: kDefaultPadding,
+          ),
           Row(
             children: const [
               Expanded(
@@ -134,25 +141,34 @@ class _LoginScreenState extends State<LoginScreen> {
                   thickness: 1, // Độ dày của đường thẳng
                 ),
               ),
-              SizedBox(height: kDefaultPadding,),
-
+              SizedBox(
+                height: kDefaultPadding,
+              ),
             ],
           ),
-          SizedBox(height: kDefaultPadding,),
+          SizedBox(
+            height: kDefaultPadding,
+          ),
           Row(
             children: [
               Stack(
                 alignment: Alignment.center,
-                  children: [
-                    ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
-                    Row(
-                      children: [
-                        ImageHelper.loadFromAsset(AssetHelper.icoGG),
-                        SizedBox(width: kMinPadding,),
-                        Text('Google', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)
-                      ],
-                    ),
-                  ],
+                children: [
+                  ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
+                  Row(
+                    children: [
+                      ImageHelper.loadFromAsset(AssetHelper.icoGG),
+                      SizedBox(
+                        width: kMinPadding,
+                      ),
+                      Text(
+                        'Google',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ],
               ),
               Stack(
                 alignment: Alignment.center,
@@ -161,22 +177,35 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       ImageHelper.loadFromAsset(AssetHelper.icoFB),
-                      SizedBox(width: kMinPadding,),
-                      Text('Facebook', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),)
+                      SizedBox(
+                        width: kMinPadding,
+                      ),
+                      Text(
+                        'Facebook',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )
                     ],
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(height: kDefaultPadding,),
+          SizedBox(
+            height: kDefaultPadding,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Don’t have an account? ', style: TextStyle(fontSize: 14),),
+              Text(
+                'Don’t have an account? ',
+                style: TextStyle(fontSize: 14),
+              ),
               InkWell(
                 child: Text(
-                  'Sign in',
+                  'Sign up',
                   style: TextStyle(
                       fontSize: 14,
                       color: _isSigin ? Colors.purple : Colors.blue),
@@ -185,6 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   setState(() {
                     if (!_isSigin) _isSigin = true;
                   });
+                  Navigator.of(context).pushNamed(SignUpScreen.routeName);
                 },
               )
             ],

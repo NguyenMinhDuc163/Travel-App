@@ -179,9 +179,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                           SizedBox(
                             height: kDefaultPadding,
                           ),
-
                           ItemUtilityWidge(),
-
                           SizedBox(
                             height: kDefaultPadding,
                           ),
@@ -209,6 +207,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                               Navigator.of(context)
                                   .pushNamed(SelectRoomScreen.routeName);
                             },
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
                           ),
                         ],
                       ),
