@@ -50,10 +50,14 @@ class _HotelsScreenState extends State<HotelsScreen> {
   Widget build(BuildContext context) {
     return AppBarContinerWidget(
       titleString: "Hotels",
-      child: SingleChildScrollView(
-        child: Column(
-          children: listHotel.map((e) => ItemHotelWidget(hotelModel: e)).toList(),
-        ),
+      child: Column(
+        children: [
+          Expanded(child: SingleChildScrollView(
+            child: Column(
+              children: listHotel.map((e) => ItemHotelWidget(hotelModel: e)).toList(),
+            ),
+          ))
+        ],
       ),
     );
   }
