@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
+import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
 import 'home_screen.dart';
@@ -24,12 +25,13 @@ class _MainAppState extends State<MainApp> {
         index: _currentIndex,
         children: [
           HomeScreen(),
-          Container(
+          LoginScreen(),
+          // Container(
             // color: Colors.red,
-            child: AppBarContinerWidget(
-              titleString: 'Like', child: Container(),
-            ),
-          ),
+            // child: AppBarContinerWidget(
+            //   titleString: 'Like', child: Container(),
+            // ),
+          // ),
           Container(
             child: AppBarContinerWidget(
               titleString: 'Booking', child: Container(),

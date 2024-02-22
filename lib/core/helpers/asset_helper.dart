@@ -20,6 +20,10 @@ mixin AssetHelper {
   static const String icoNonSmoke = 'assets/icons/ico_non_smoke.png';
   static const String icoUser = 'assets/icons/ico_user.png';
   static const String icoPromo = 'assets/icons/ico_promo.png';
+  static const String icoFB = 'assets/icons/icoFB.png';
+  static const String icoGG = 'assets/icons/icoGG.png';
+  static const String icoRectangleBlue = 'assets/icons/icoRectangleBlue.png';
+  static const String icoRectangleWhite = 'assets/icons/icoRectangleWhite.png';
 
   //Assets in images
   static const String backgroundSplash = 'assets/images/background_splash.png';

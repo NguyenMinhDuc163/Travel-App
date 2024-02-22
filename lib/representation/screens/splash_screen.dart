@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:travel_app/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/representation/screens/intro_screen.dart';
+import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/screens/main_app.dart';
 
 import '../../core/helpers/asset_helper.dart';
@@ -26,7 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
     final ignoreIntroScreen = LocalStorageHelper.getValue('ignoreIntroScreen') as bool?;
     await Future.delayed(const Duration(seconds: 1));
     if(ignoreIntroScreen != null && ignoreIntroScreen){
-      Navigator.of(context).pushNamed(MainApp.routeName);
+      // Navigator.of(context).pushNamed(MainApp.routeName);
+      Navigator.of(context).pushNamed(LoginScreen.routeName);
     }
     else{
       LocalStorageHelper.setValue('ignoreIntroScreen', true);
