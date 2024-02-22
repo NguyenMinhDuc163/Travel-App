@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buidlImageHomScreen(String name, String image) {
+  Widget _buildImageHomScreen(String name, String image) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
@@ -281,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: listImageLeft
                           .map(
-                            (e) => _buidlImageHomScreen(
+                            (e) => _buildImageHomScreen(
                               e['name']!,
                               e['image']!,
                             ),
@@ -296,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: listImageRight
                           .map(
-                            (e) => _buidlImageHomScreen(
+                            (e) => _buildImageHomScreen(
                               e['name']!,
                               e['image']!,
                             ),

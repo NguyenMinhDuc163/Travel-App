@@ -33,7 +33,7 @@ class _IntroScreenState extends State<IntroScreen> {
         Container(
             alignment: alignmentDirectional,
             child: ImageHelper.loadFromAsset(image,
-                height: 400 , fit: BoxFit.fitHeight)),
+                height: 400, fit: BoxFit.fitHeight)),
         const SizedBox(
           height: kMediumPadding * 2, // cach khoang 50 px
         ),
@@ -60,7 +60,7 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
-    @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -68,74 +68,75 @@ class _IntroScreenState extends State<IntroScreen> {
       _streamController.add(_pageController.page!.toInt());
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          PageView(
-            controller: _pageController,
+        body: Stack(
+      children: [
+        PageView(
+          controller: _pageController,
+          children: [
+            _buildItemIntroScreen(
+                AssetHelper.slide1,
+                "Book a flight",
+                'Found a flight that matches your destination and schedule? Book it instantly.',
+                Alignment.centerRight),
+            _buildItemIntroScreen(
+                AssetHelper.slide2,
+                "Find a hotel room",
+                'Select the day, book your room. We give you the best price',
+                Alignment.centerRight),
+            _buildItemIntroScreen(
+                AssetHelper.slide3,
+                "Enjoy your trip",
+                'Easy discovering new places and share these between your friends and travel together.',
+                Alignment.centerLeft),
+          ],
+        ),
+        Positioned(
+          left: kMediumPadding,
+          right: kMediumPadding,
+          bottom: kMediumPadding * 2,
+          child: Row(
             children: [
-              _buildItemIntroScreen(
-                  AssetHelper.slide1,
-                  "Book a flight",
-                  'Found a flight that matches your destination and schedule? Book it instantly.',
-                  Alignment.centerRight),
-              _buildItemIntroScreen(
-                  AssetHelper.slide2,
-                  "Find a hotel room",
-                  'Select the day, book your room. We give you the best price',
-                  Alignment.centerRight),
-              _buildItemIntroScreen(
-                  AssetHelper.slide3,
-                  "Enjoy your trip",
-                  'Easy discovering new places and share these between your friends and travel together.',
-                  Alignment.centerLeft),
-            ],
-          ),
-          Positioned(
-            left: kMediumPadding,
-            right: kMediumPadding,
-              bottom: kMediumPadding * 2,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 6,
-                  child: SmoothPageIndicator(
-                    controller: _pageController,
-                    count: 3,
-                    effect: ExpandingDotsEffect(
-                      dotWidth: kMinPadding,
-                      dotHeight: kMinPadding,
-                      activeDotColor: Colors.orange,
-                    ),
+              Expanded(
+                flex: 6,
+                child: SmoothPageIndicator(
+                  controller: _pageController,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                    dotWidth: kMinPadding,
+                    dotHeight: kMinPadding,
+                    activeDotColor: Colors.orange,
                   ),
                 ),
-                StreamBuilder<int>( // neu dung nhu the nay chi rendew buttom chu khong render ca man hinh
+              ),
+              StreamBuilder<int>(
+                  // neu dung nhu the nay chi rendew buttom chu khong render ca man hinh
                   stream: _streamController.stream,
                   initialData: 0, // tranh gt null
                   builder: (context, snapshot) {
                     return Expanded(
                       flex: 4,
-                      child:  ButtonWidget(
-                        title:  (snapshot.data != 2 ) ? 'Next' : 'Get Started',
-                        ontap: (){
-                          if(_pageController.page != 2){
-                            _pageController.nextPage(duration: const Duration(milliseconds: 200), curve: Curves.easeInSine);
-                          }
-                          else{
+                      child: ButtonWidget(
+                        title: (snapshot.data != 2) ? 'Next' : 'Get Started',
+                        ontap: () {
+                          if (_pageController.page != 2) {
+                            _pageController.nextPage(
+                                duration: const Duration(milliseconds: 200),
+                                curve: Curves.easeInSine);
+                          } else {
                             Navigator.of(context).pushNamed(MainApp.routeName);
                           }
                         },
                       ),
                     );
-                  }
-                ),
-              ],
-            ),
-          )
-        ],
-      )
-    );
+                  }),
+            ],
+          ),
+        )
+      ],
+    ));
   }
 }
