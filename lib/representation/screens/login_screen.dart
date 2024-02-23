@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
@@ -101,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {
                   setState(() {
                     if (!_isPressed) _isPressed = true;
+                    Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
                   });
                 },
               )
