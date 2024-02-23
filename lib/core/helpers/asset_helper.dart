@@ -24,6 +24,7 @@ mixin AssetHelper {
   static const String icoGG = 'assets/icons/icoGG.png';
   static const String icoRectangleBlue = 'assets/icons/icoRectangleBlue.png';
   static const String icoRectangleWhite = 'assets/icons/icoRectangleWhite.png';
+  static const String icoStarRate = 'assets/icons/ico_star_rate.png';
 
   //Assets in images
   static const String backgroundSplash = 'assets/images/background_splash.png';
@@ -44,4 +45,7 @@ mixin AssetHelper {
   static const String turkey = 'assets/images/turkey.png';
   static const String japan = 'assets/images/japan.png';
   static const String dubai = 'assets/images/dubai.png';
+  static const String starScore = 'assets/images/star_score.png';
+  static const String comment1 = 'assets/images/comment_1.png';
+  static const String comment2 = 'assets/images/comment_2.png';
 }
