@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/data/models/room_model.dart';
+import 'package:travel_app/representation/screens/booking_flight_screen.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/guest_and_room_booking_screen.dart';
@@ -33,6 +34,7 @@ final Map<String, WidgetBuilder> routes = {
   SignUpScreen.routeName: (context) => SignUpScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   RattingScreen.routeName: (context) => RattingScreen(),
+  BookingFlightScreen.routeName: (context) => BookingFlightScreen(),
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {

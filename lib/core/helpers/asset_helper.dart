@@ -25,6 +25,11 @@ mixin AssetHelper {
   static const String icoRectangleBlue = 'assets/icons/icoRectangleBlue.png';
   static const String icoRectangleWhite = 'assets/icons/icoRectangleWhite.png';
   static const String icoStarRate = 'assets/icons/ico_star_rate.png';
+  static const String icoAir = 'assets/icons/ico_air.png';
+  static const String icoCalender = 'assets/icons/ico_calender.png';
+  static const String icoClassFlight = 'assets/icons/ico_class_flight.png';
+  static const String icoLocalFlight = 'assets/icons/ico_local_flight.png';
+  static const String icoPersonFlight = 'assets/icons/ico_person_flight.png';
 
   //Assets in images
   static const String backgroundSplash = 'assets/images/background_splash.png';

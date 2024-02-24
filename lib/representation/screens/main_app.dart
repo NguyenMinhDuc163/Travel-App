@@ -7,6 +7,7 @@ import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/screens/ratiing_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
+import 'booking_flight_screen.dart';
 import 'home_screen.dart';
 
 class MainApp extends StatefulWidget {
@@ -27,12 +28,8 @@ class _MainAppState extends State<MainApp> {
         children: [
           HomeScreen(),
           RattingScreen(),
+          BookingFlightScreen(),
           LoginScreen(),
-          Container(
-            child: AppBarContinerWidget(
-              titleString: 'Profile', child: Container(),
-            ),
-          ),
         ],
       ),
       bottomNavigationBar: SalomonBottomBar( // tao ra 1 thanh buttom bar bang thu vien
