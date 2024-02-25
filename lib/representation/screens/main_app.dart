@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
+import 'package:travel_app/representation/screens/profile_screen.dart';
 import 'package:travel_app/representation/screens/ratiing_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
@@ -29,7 +30,7 @@ class _MainAppState extends State<MainApp> {
           HomeScreen(),
           RattingScreen(),
           BookingFlightScreen(),
-          LoginScreen(),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: SalomonBottomBar( // tao ra 1 thanh buttom bar bang thu vien

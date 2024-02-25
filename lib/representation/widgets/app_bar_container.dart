@@ -19,7 +19,9 @@ class AppBarContinerWidget extends StatelessWidget {
     this.paddingContent = const EdgeInsets.symmetric(
       horizontal: kMediumPadding,
     ),
-  })  : assert(title != null || titleString != null, 'title or titleString can\'t be null'),
+    this.avatar, this.email,
+  })  : assert(title != null || titleString != null,
+            'title or titleString can\'t be null'),
         super(key: key);
 
   final Widget child;
@@ -29,6 +31,8 @@ class AppBarContinerWidget extends StatelessWidget {
   final bool implementTraling;
   final bool implementLeading;
   final EdgeInsets? paddingContent;
+  final String? avatar;
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +75,26 @@ class AppBarContinerWidget extends StatelessWidget {
                               children: [
                                 Text(
                                   titleString ?? '',
-                                  style: TextStyles.defaultStyle.fontHeader.whiteTextColor.bold,
+                                  style: TextStyles.defaultStyle.fontHeader
+                                      .whiteTextColor.bold,
                                 ),
-                                if (subTitleString != null)
+                                if(subTitleString != null && email != null) // dung cho profile screen
+                                  Column(
+                                    children: [
+                                      Text(subTitleString!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                                      Text(email!, style: TextStyle(fontSize: 12),)
+                                    ],
+                                  ),
+
+
+                                if (subTitleString != null && email == null)
                                   Padding(
-                                    padding: const EdgeInsets.only(top: kMediumPadding),
+                                    padding: const EdgeInsets.only(
+                                        top: kMediumPadding),
                                     child: Text(
                                       subTitleString!,
-                                      style: TextStyles.defaultStyle.fontCaption.whiteTextColor,
+                                      style: TextStyles.defaultStyle.fontCaption
+                                          .whiteTextColor,
                                     ),
                                   ),
                               ],
@@ -129,6 +145,7 @@ class AppBarContinerWidget extends StatelessWidget {
                       AssetHelper.icoOvalBottom,
                     ),
                   ),
+                  if(avatar != null)Positioned(child: ImageHelper.loadFromAsset(avatar!))
                 ],
               ),
               centerTitle: true,

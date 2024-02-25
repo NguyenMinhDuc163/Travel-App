@@ -53,4 +53,5 @@ mixin AssetHelper {
   static const String starScore = 'assets/images/star_score.png';
   static const String comment1 = 'assets/images/comment_1.png';
   static const String comment2 = 'assets/images/comment_2.png';
+  static const String avatarProfile = 'assets/images/avatar_profile.png';
 }
