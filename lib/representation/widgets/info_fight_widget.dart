@@ -18,11 +18,14 @@ class InfoFlightWidget extends StatelessWidget {
         color: Colors.white,
       ),
       child: Row(
-
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ImageHelper.loadFromAsset(icon),
+            child: SizedBox(
+              width: 47, height: 47,
+                child: ImageHelper.loadFromAsset(icon)),
           ),
           SizedBox(width: screenSize.width * 0.1,),
           Column(

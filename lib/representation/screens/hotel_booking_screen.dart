@@ -23,6 +23,7 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
   Widget build(BuildContext context) {
     return AppBarContinerWidget(
       titleString: "Hotel Booking",
+      subTitleString: 'Choose your favorite hotel and enjoy the service',
       child: SingleChildScrollView(
         child: Column(
           children: [

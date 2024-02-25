@@ -71,41 +71,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: 'Log out',
               description: 'Further secure your account for safety',
               iconFWA: FontAwesomeIcons.rightToBracket,
-              onTap: (){
+              onTap: () {
                 Navigator.of(context).pushNamed(LoginScreen.routeName);
               },
             ),
             SizedBox(
-              height: kDefaultPadding ,
+              height: kDefaultPadding,
             ),
-            Text('More', style: TextStyle(fontSize:18, fontWeight: FontWeight.bold),),
+            Text(
+              'More',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             SizedBox(
-              height: kDefaultPadding ,
+              height: kDefaultPadding,
+            ),
+            ItemBookingWidget(
+              icon: AssetHelper.person,
+              title: 'Help & Support',
+              description: 'Help & Support',
+              iconFWA: FontAwesomeIcons.bell,
+              onTap: () {},
+            ),
+            SizedBox(
+              height: kDefaultPadding,
             ),
             ItemBookingWidget(
               icon: AssetHelper.person,
               title: 'About App',
               description: 'About App',
               iconFWA: FontAwesomeIcons.heart,
-              onTap: (){
-
-              },
+              onTap: () {},
             ),
             SizedBox(
-              height: kDefaultPadding ,
-            ),
-
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'Help & Support',
-              description: 'Help & Support',
-              iconFWA: FontAwesomeIcons.bell,
-              onTap: (){
-
-              },
-            ),
-            SizedBox(
-              height: kDefaultPadding ,
+              height: kDefaultPadding,
             ),
           ],
         ),
