@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
@@ -72,6 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               description: 'Further secure your account for safety',
               iconFWA: FontAwesomeIcons.rightToBracket,
               onTap: () {
+                FirebaseAuth.instance.signOut();
                 Navigator.of(context).pushNamed(LoginScreen.routeName);
               },
             ),

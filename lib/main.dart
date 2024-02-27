@@ -6,9 +6,14 @@ import 'package:travel_app/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/representation/screens/splash_screen.dart';
 import 'package:travel_app/routes.dart';
 
-Future main() async{
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyBGcaswmyTpDHEglKPas9fxr5ZJahkwp7s",
+          appId: "1:183380913156:android:64773a459efaf87eda1951",
+          messagingSenderId: "183380913156",
+          projectId: "travolapp"));
 
   await Hive.initFlutter();
   await LocalStorageHelper.initLocalStorageHelper(); // khoi tao LocalStorage
@@ -34,4 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

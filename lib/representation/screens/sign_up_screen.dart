@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -5,6 +6,7 @@ import 'package:travel_app/core/helpers/image_helper.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
+import 'package:travel_app/user_auth/fiirebase_auth_immplemmentation/firebase_auth_services.dart';
 
 import '../../core/constants/dimension_constants.dart';
 import '../../core/helpers/asset_helper.dart';
@@ -17,6 +19,22 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+  TextEditingController _userNameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
+
+  final FirebaseAuthService _auth = FirebaseAuthService();
+  @override
+  void dispose() {
+    _userNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     String? selectedValue = 'Vietnamese';
@@ -30,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             TextField(
               style: TextStyle(fontSize: 18, color: Colors.black),
+              controller: _userNameController,
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -86,6 +105,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               height: kDefaultPadding,
             ),
             TextField(
+              controller: _phoneNumberController,
               style: TextStyle(fontSize: 18, color: Colors.black),
               decoration: InputDecoration(
                   filled: true,
@@ -104,6 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             TextField(
               style: TextStyle(fontSize: 18, color: Colors.black),
+              controller: _emailController,
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -121,6 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             TextField(
               style: TextStyle(fontSize: 18, color: Colors.black),
+              controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                   filled: true,
@@ -200,9 +222,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             ButtonWidget(
               title: 'Sign Up',
-              ontap: () {
-                Navigator.of(context).pushNamed(LoginScreen.routeName);
-              },
+              // ontap: () {
+              //   Navigator.of(context).pushNamed(LoginScreen.routeName);
+              // },
+              ontap: _signUp,
             ),
             SizedBox(
               height: kDefaultPadding,
@@ -289,5 +312,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  void _signUp() async{
+    final String userName = _userNameController.text;
+    final String email = _emailController.text;
+    final String password = _passwordController.text;
+    final String phoneNumber = _phoneNumberController.text;
+    print('userName: $userName, email: $email, password: $password, phoneNumber: $phoneNumber');
+
+    User? user = await _auth.signUpWithEmailAndPassWord(email, password);
+
+    if(user != null){
+      print('Sign up success');
+      Navigator.of(context).pushNamed(LoginScreen.routeName);
+  }else{
+      print('Sign up failed');
+    }
   }
 }
