@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/global/common/toast.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/home_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
@@ -27,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isSigin = false;
 
   final FirebaseAuthService _auth = FirebaseAuthService();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -121,7 +124,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     setState(() {
                       if (!_isPressed) _isPressed = true;
-                      Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
+                      Navigator.of(context)
+                          .pushNamed(ForgotPasswordScreen.routeName);
                     });
                   },
                 )
@@ -130,11 +134,10 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: kDefaultPadding,
             ),
+            //TODO login button
             ButtonWidget(
               title: 'Login',
-              // ontap: () {
-              //   Navigator.of(context).pushNamed(MainApp.routeName);
-              // },
+              isign: _isSigin,
               ontap: _signIn,
             ),
             SizedBox(
@@ -173,46 +176,54 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Row(
               children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
-                    Row(
-                      children: [
-                        ImageHelper.loadFromAsset(AssetHelper.icoGG),
-                        SizedBox(
-                          width: kMinPadding,
-                        ),
-                        Text(
-                          'Google',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: _signInWithGoogle,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
+                      Row(
+                        children: [
+                          ImageHelper.loadFromAsset(AssetHelper.icoGG),
+                          SizedBox(
+                            width: kMinPadding,
+                          ),
+                          Text(
+                            'Google',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ImageHelper.loadFromAsset(AssetHelper.icoRectangleBlue),
-                    Row(
-                      children: [
-                        ImageHelper.loadFromAsset(AssetHelper.icoFB),
-                        SizedBox(
-                          width: kMinPadding,
-                        ),
-                        Text(
-                          'Facebook',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                GestureDetector(
+                  onTap: () {
+                    //TODO login with facebook
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ImageHelper.loadFromAsset(AssetHelper.icoRectangleBlue),
+                      Row(
+                        children: [
+                          ImageHelper.loadFromAsset(AssetHelper.icoFB),
+                          SizedBox(
+                            width: kMinPadding,
+                          ),
+                          Text(
+                            'Facebook',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
             SizedBox(
@@ -247,18 +258,54 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _signIn() async{
-    final String email = _emailController.text;
-    final String password = _passwordController.text;
+  void _signIn() async {
+    setState(() {
+      _isSigin = true;
+    });
+
+    final String email = _emailController.text.trim();
+    final String password = _passwordController.text.trim();
     print('email: $email, password: $password');
 
     User? user = await _auth.signInWithEmailAndPassWord(email, password);
 
-    if(user != null){
-      print('Sign in success');
+    setState(() {
+      _isSigin = false;
+    });
+
+    if (user != null) {
+      showToast(message: 'Sign in success');
       Navigator.of(context).pushNamed(MainApp.routeName);
-    }else{
-      print('Sign up failed');
+    } else {
+      showToast(message: 'Sign up failed');
     }
+  }
+
+  _signInWithGoogle() async {
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await _googleSignIn.signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken,
+        );
+
+        await _firebaseAuth.signInWithCredential(credential);
+        Navigator.pushNamed(context, MainApp.routeName);
+      }
+    } catch (e) {
+      showToast(message: "some error occured $e");
+      print(e);
+    }
+  }
+  _signInWithFaceBook() async {
+    //TODO login with facebook
   }
 }

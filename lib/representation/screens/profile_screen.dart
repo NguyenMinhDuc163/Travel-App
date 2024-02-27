@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/global/common/toast.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
@@ -75,6 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onTap: () {
                 FirebaseAuth.instance.signOut();
                 Navigator.of(context).pushNamed(LoginScreen.routeName);
+                showToast(message: 'Successfully logged out');
               },
             ),
             SizedBox(

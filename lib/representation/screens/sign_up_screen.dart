@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
+import 'package:travel_app/global/common/toast.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
@@ -26,6 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _phoneNumberController = TextEditingController();
 
   final FirebaseAuthService _auth = FirebaseAuthService();
+  bool isSign = false;
   @override
   void dispose() {
     _userNameController.dispose();
@@ -222,9 +224,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             ButtonWidget(
               title: 'Sign Up',
-              // ontap: () {
-              //   Navigator.of(context).pushNamed(LoginScreen.routeName);
-              // },
+              isign: isSign,
               ontap: _signUp,
             ),
             SizedBox(
@@ -315,19 +315,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _signUp() async{
-    final String userName = _userNameController.text;
-    final String email = _emailController.text;
-    final String password = _passwordController.text;
-    final String phoneNumber = _phoneNumberController.text;
+
+    setState(() {
+      isSign = true;
+    });
+    final String userName = _userNameController.text.trim();
+    final String email = _emailController.text.trim();
+    final String password = _passwordController.text.trim();
+    final String phoneNumber = _phoneNumberController.text.trim();
     print('userName: $userName, email: $email, password: $password, phoneNumber: $phoneNumber');
 
     User? user = await _auth.signUpWithEmailAndPassWord(email, password);
 
+    setState(() {
+      isSign = false;
+
+    });
+
     if(user != null){
-      print('Sign up success');
+      showToast(message: 'Sign up success');
       Navigator.of(context).pushNamed(LoginScreen.routeName);
   }else{
-      print('Sign up failed');
+      showToast(message: 'Sign up failed');
     }
   }
 }
