@@ -5,6 +5,7 @@ import 'package:travel_app/representation/screens/booking_flight_screen.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/guest_and_room_booking_screen.dart';
+import 'package:travel_app/representation/screens/home_screen.dart';
 import 'package:travel_app/representation/screens/hotel_booking_screen.dart';
 import 'package:travel_app/representation/screens/hotel_detail_screen.dart';
 import 'package:travel_app/representation/screens/hotel_screen.dart';

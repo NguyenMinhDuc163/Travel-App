@@ -132,9 +132,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             ButtonWidget(
               title: 'Login',
-              ontap: () {
-                Navigator.of(context).pushNamed(MainApp.routeName);
-              },
+              // ontap: () {
+              //   Navigator.of(context).pushNamed(MainApp.routeName);
+              // },
+              ontap: _signIn,
             ),
             SizedBox(
               height: kDefaultPadding,
@@ -231,13 +232,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 14,
                         color: _isSigin ? Colors.purple : Colors.blue),
                   ),
-                  // onTap: () {
-                  //   setState(() {
-                  //     if (!_isSigin) _isSigin = true;
-                  //   });
-                  //   Navigator.of(context).pushNamed(SignUpScreen.routeName);
-                  // },
-                  onTap: _signIn,
+                  onTap: () {
+                    setState(() {
+                      if (!_isSigin) _isSigin = true;
+                    });
+                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                  },
                 )
               ],
             ),
@@ -256,7 +256,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if(user != null){
       print('Sign in success');
-      Navigator.of(context).pushNamed(HotelScreen.routeName);
+      Navigator.of(context).pushNamed(MainApp.routeName);
     }else{
       print('Sign up failed');
     }
