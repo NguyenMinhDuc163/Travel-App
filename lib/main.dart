@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:travel_app/core/constants/color_constants.dart';
@@ -5,7 +6,10 @@ import 'package:travel_app/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/representation/screens/splash_screen.dart';
 import 'package:travel_app/routes.dart';
 
-void main() async{
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   await Hive.initFlutter();
   await LocalStorageHelper.initLocalStorageHelper(); // khoi tao LocalStorage
   runApp(const MyApp());

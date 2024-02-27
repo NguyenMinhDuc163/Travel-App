@@ -41,6 +41,10 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   syncfusion_flutter_datepicker: ^24.2.6
   expandable: ^5.0.1
+  firebase_core: ^2.25.4
+  cloud_firestore: ^4.15.5
+  firebase_auth: ^4.17.4
+  firebase_storage: ^11.6.6
 
 dev_dependencies:
   flutter_test:
