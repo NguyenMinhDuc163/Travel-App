@@ -6,8 +6,10 @@ import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
 import 'package:travel_app/global/common/toast.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
+import 'package:travel_app/representation/screens/user_profile_sceen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
+import '../../test.dart';
 import '../widgets/item_booking_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -37,6 +39,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: 'My account',
               description: 'Make changes to your account',
               iconFWA: FontAwesomeIcons.user,
+              onTap: (){
+                Navigator.of(context).pushNamed(UserProfileScreen.routeName);
+              },
             ),
             SizedBox(
               height: kDefaultPadding,
@@ -46,6 +51,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: 'Saved Beneficiary',
               description: 'Manage your saved account',
               iconFWA: FontAwesomeIcons.user,
+              onTap: (){
+              },
             ),
             SizedBox(
               height: kDefaultPadding,

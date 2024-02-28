@@ -19,6 +19,8 @@ import 'package:travel_app/representation/screens/select_date_screen.dart';
 import 'package:travel_app/representation/screens/select_room_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
 import 'package:travel_app/representation/screens/splash_screen.dart';
+import 'package:travel_app/representation/screens/user_profile_sceen.dart';
+import 'package:travel_app/test.dart';
 
 import 'data/models/hotel_model.dart';
 
@@ -38,6 +40,7 @@ final Map<String, WidgetBuilder> routes = {
   RattingScreen.routeName: (context) => RattingScreen(),
   BookingFlightScreen.routeName: (context) => BookingFlightScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
+  UserProfileScreen.routeName: (context) => UserProfileScreen(),
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {

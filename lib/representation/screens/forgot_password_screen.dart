@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
+import 'package:travel_app/representation/screens/main_app.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
 
 import '../../core/constants/dimension_constants.dart';
+import '../../global/common/toast.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -14,6 +16,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  bool _isForgot = false;
   @override
   Widget build(BuildContext context) {
     return AppBarContinerWidget(
@@ -38,10 +41,26 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     borderSide: BorderSide(color: Colors.white, width: 1),
                     borderRadius: BorderRadius.all(Radius.circular(6)))),
           ),
-          SizedBox(height: kDefaultPadding,),
-          ButtonWidget(title: 'Send', ontap: (){
-            Navigator.of(context).pushNamed(LoginScreen.routeName);
-          },)
+          SizedBox(
+            height: kDefaultPadding,
+          ),
+          ButtonWidget(
+            title: 'Send',
+            isign: _isForgot,
+            ontap: () async {
+              setState(() {
+                _isForgot = true;
+              });
+              await Future.delayed(const Duration(seconds: 1));
+              Navigator.of(context).pushNamed(MainApp.routeName);
+              showToast(
+                  message:
+                      'Password reset successfully, please check your email');
+              setState(() {
+                _isForgot = false;
+              });
+            },
+          )
         ],
       ),
     );
