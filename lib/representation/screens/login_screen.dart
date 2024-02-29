@@ -27,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isCheck = false;
   bool _isPressed = false;
   bool _isSigin = false;
+  bool _isCliclSignUp = false;
 
   final FirebaseAuthService _auth = FirebaseAuthService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -175,6 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: kDefaultPadding,
             ),
             Row(
+
               children: [
                 GestureDetector(
                   onTap: _signInWithGoogle,
@@ -183,6 +185,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ImageHelper.loadFromAsset(AssetHelper.icoGG),
                           SizedBox(
@@ -207,6 +211,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       ImageHelper.loadFromAsset(AssetHelper.icoRectangleBlue),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ImageHelper.loadFromAsset(AssetHelper.icoFB),
                           SizedBox(
@@ -241,11 +247,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Sign up',
                     style: TextStyle(
                         fontSize: 14,
-                        color: _isSigin ? Colors.purple : Colors.blue),
+                        color: _isCliclSignUp ? Colors.purple : Colors.blue),
                   ),
                   onTap: () {
                     setState(() {
-                      if (!_isSigin) _isSigin = true;
+                      if (!_isCliclSignUp) _isCliclSignUp = true;
                     });
                     Navigator.of(context).pushNamed(SignUpScreen.routeName);
                   },
@@ -262,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isSigin = true;
     });
-
+    await Future.delayed(const Duration(milliseconds: 400));
     final String email = _emailController.text.trim();
     final String password = _passwordController.text.trim();
     print('email: $email, password: $password');
@@ -305,6 +311,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print(e);
     }
   }
+
   _signInWithFaceBook() async {
     //TODO login with facebook
   }

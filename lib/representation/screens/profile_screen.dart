@@ -5,7 +5,9 @@ import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
 import 'package:travel_app/global/common/toast.dart';
+import 'package:travel_app/representation/screens/intro_screen.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
+import 'package:travel_app/representation/screens/splash_screen.dart';
 import 'package:travel_app/representation/screens/user_profile_sceen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
@@ -52,6 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               description: 'Manage your saved account',
               iconFWA: FontAwesomeIcons.user,
               onTap: (){
+                Navigator.of(context).pushNamed(SplashScreen.routeName);
               },
             ),
             SizedBox(

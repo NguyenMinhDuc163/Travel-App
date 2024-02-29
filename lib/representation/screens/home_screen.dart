@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Hi James!',
+                Text('Hi Nguyen Duc !',
                     style:
                         TextStyles.defaultStyle.fontHeader.whiteTextColor.bold),
                 SizedBox(

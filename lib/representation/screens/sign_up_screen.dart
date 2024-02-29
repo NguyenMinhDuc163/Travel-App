@@ -319,6 +319,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       isSign = true;
     });
+    await Future.delayed(const Duration(milliseconds: 400));
     final String userName = _userNameController.text.trim();
     final String email = _emailController.text.trim();
     final String password = _passwordController.text.trim();
