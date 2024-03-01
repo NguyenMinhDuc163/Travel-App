@@ -23,25 +23,25 @@ class ButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(kMediumPadding),
           gradient:
-              opacity != null ? null : Gradients.defaultGradientBackground,
+          opacity != null ? null : Gradients.defaultGradientBackground,
           color: opacity,
         ),
         alignment: Alignment.center,
         child: (isign == true)
             ? SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                ))
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ))
             : Text(
-                title,
-                style: TextStyles.defaultStyle.bold.copyWith(
-                  color: opacity != null
-                      ? ColorPalette.primaryColor
-                      : Colors.white,
-                ),
-              ),
+          title,
+          style: TextStyles.defaultStyle.bold.copyWith(
+            color: opacity != null
+                ? ColorPalette.primaryColor
+                : Colors.white,
+          ),
+        ),
       ),
     );
   }

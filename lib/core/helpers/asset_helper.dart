@@ -30,6 +30,7 @@ mixin AssetHelper {
   static const String icoClassFlight = 'assets/icons/ico_class_flight.png';
   static const String icoLocalFlight = 'assets/icons/ico_local_flight.png';
   static const String icoPersonFlight = 'assets/icons/ico_person_flight.png';
+  static const String icoAddCode = 'assets/icons/ico_add_code.png';
 
   //Assets in images
   static const String backgroundSplash = 'assets/images/background_splash.png';

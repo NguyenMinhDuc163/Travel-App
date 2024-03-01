@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/data/models/room_model.dart';
 import 'package:travel_app/representation/screens/booking_flight_screen.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
+import 'package:travel_app/representation/screens/contact_details_screen.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/guest_and_room_booking_screen.dart';
 import 'package:travel_app/representation/screens/home_screen.dart';
@@ -13,7 +14,9 @@ import 'package:travel_app/representation/screens/hotels_screen.dart';
 import 'package:travel_app/representation/screens/intro_screen.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/screens/main_app.dart';
+import 'package:travel_app/representation/screens/payment_screen.dart';
 import 'package:travel_app/representation/screens/profile_screen.dart';
+import 'package:travel_app/representation/screens/promo_code_screen.dart';
 import 'package:travel_app/representation/screens/ratiing_screen.dart';
 import 'package:travel_app/representation/screens/select_date_screen.dart';
 import 'package:travel_app/representation/screens/select_room_screen.dart';
@@ -41,6 +44,9 @@ final Map<String, WidgetBuilder> routes = {
   BookingFlightScreen.routeName: (context) => BookingFlightScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   UserProfileScreen.routeName: (context) => UserProfileScreen(),
+  ContactDetailsScreen.routeName: (context) => ContactDetailsScreen(),
+  PromoCodeScreen.routeName: (context) => PromoCodeScreen(),
+  PaymentScreen.routeName: (context) => PaymentScreen(),
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
