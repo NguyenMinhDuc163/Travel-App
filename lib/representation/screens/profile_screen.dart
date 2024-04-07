@@ -28,8 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return AppBarContinerWidget(
       titleString: "Profile",
-      subTitleString: Provider.of<UserProvider>(context, listen: false).user!.userName.toString() ,
-      email: Provider.of<UserProvider>(context, listen: false).user!.email.toString(),
+      subTitleString: Provider.of<UserProvider>(context, listen: false).user?.userName.toString() ?? 'nguyen van a',
+      email: Provider.of<UserProvider>(context, listen: false).user?.email.toString() ?? 'abc@gmail.com',
       avatar: AssetHelper.avatarProfile,
       child: SingleChildScrollView(
         child: Column(

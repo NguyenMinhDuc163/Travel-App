@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text( Provider.of<UserProvider>(context, listen: false).user!.userName.toString(),
+                Text( Provider.of<UserProvider>(context, listen: false).user?.userName.toString() ?? 'Nguyen Van A',
                     style:
                         TextStyles.defaultStyle.fontHeader.whiteTextColor.bold),
                 SizedBox(
