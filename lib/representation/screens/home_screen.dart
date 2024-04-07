@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -6,6 +7,7 @@ import '../../core/constants/dimension_constants.dart';
 import '../../core/constants/textstyle_ext.dart';
 import '../../core/helpers/asset_helper.dart';
 import '../../core/helpers/image_helper.dart';
+import '../../provider/UserProvider.dart';
 import 'hotel_booking_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -140,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Hi Nguyen Duc !',
+                Text( Provider.of<UserProvider>(context, listen: false).user!.userName.toString(),
                     style:
                         TextStyles.defaultStyle.fontHeader.whiteTextColor.bold),
                 SizedBox(

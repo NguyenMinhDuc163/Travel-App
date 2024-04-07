@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
@@ -13,6 +14,8 @@ import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
 import 'package:travel_app/user_auth/fiirebase_auth_immplemmentation/firebase_auth_services.dart';
 
+import '../../data/models/user_model.dart';
+import '../../provider/UserProvider.dart';
 import 'hotel_screen.dart';
 import 'main_app.dart';
 
@@ -271,10 +274,10 @@ class _LoginScreenState extends State<LoginScreen> {
     await Future.delayed(const Duration(milliseconds: 400));
     final String email = _emailController.text.trim();
     final String password = _passwordController.text.trim();
-    print('email: $email, password: $password');
 
     User? user = await _auth.signInWithEmailAndPassWord(email, password);
-
+    UserModel userProvider = await _auth.getDataCurrentUser();
+    Provider.of<UserProvider>(context, listen: false).setUser(userProvider);
     setState(() {
       _isSigin = false;
     });

@@ -83,7 +83,7 @@ class _PasswordFieldState extends State<PasswordField> {
 }
 
 class TextFormFieldDemoState extends State<TextFormFieldDemo> {
-  UseModel person = UseModel();
+  UserModel person = UserModel();
 
   late FocusNode _phoneNumber, _email, _lifeStory, _password, _retypePassword;
 
@@ -126,7 +126,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
       showInSnackBar('Please fix the errors in the form.');
     } else {
       form.save();
-      showInSnackBar('Name: ${person.name}, Phone: ${person.phoneNumber}');
+      showInSnackBar('Name: ${person.userName}, Phone: ${person.phoneNum}');
     }
   }
 
@@ -181,7 +181,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                 labelText: 'Name *',
               ),
               onSaved: (value) {
-                person.name = value;
+                person.userName = value;
                 _phoneNumber.requestFocus();
               },
               validator: _validateName,
@@ -199,7 +199,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
               ),
               keyboardType: TextInputType.phone,
               onSaved: (value) {
-                person.phoneNumber = value;
+                person.phoneNum = value;
                 _email.requestFocus();
               },
               maxLength: 14,

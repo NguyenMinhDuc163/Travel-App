@@ -326,7 +326,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final String phoneNumber = _phoneNumberController.text.trim();
     print('userName: $userName, email: $email, password: $password, phoneNumber: $phoneNumber');
 
-    User? user = await _auth.signUpWithEmailAndPassWord(email, password);
+    User? user = await _auth.signUpWithEmailAndPassWord(email, password, userName,  phoneNumber);
 
     setState(() {
       isSign = false;

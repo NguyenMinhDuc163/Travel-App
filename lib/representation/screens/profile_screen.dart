@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
@@ -11,6 +12,7 @@ import 'package:travel_app/representation/screens/splash_screen.dart';
 import 'package:travel_app/representation/screens/user_profile_sceen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
+import '../../provider/UserProvider.dart';
 import '../../test.dart';
 import '../widgets/item_booking_widget.dart';
 
@@ -26,8 +28,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return AppBarContinerWidget(
       titleString: "Profile",
-      subTitleString: 'Nguyen Minh Duc',
-      email: 'abc@gmail.com',
+      subTitleString: Provider.of<UserProvider>(context, listen: false).user!.userName.toString() ,
+      email: Provider.of<UserProvider>(context, listen: false).user!.email.toString(),
       avatar: AssetHelper.avatarProfile,
       child: SingleChildScrollView(
         child: Column(

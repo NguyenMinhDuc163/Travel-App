@@ -1,13 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/color_constants.dart';
 import 'package:travel_app/core/helpers/local_storage_helper.dart';
+import 'package:travel_app/provider/UserProvider.dart';
 import 'package:travel_app/representation/screens/splash_screen.dart';
 import 'package:travel_app/routes.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyBGcaswmyTpDHEglKPas9fxr5ZJahkwp7s",
@@ -17,7 +20,11 @@ Future main() async {
 
   await Hive.initFlutter();
   await LocalStorageHelper.initLocalStorageHelper(); // khoi tao LocalStorage
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => UserProvider()),
+  ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
