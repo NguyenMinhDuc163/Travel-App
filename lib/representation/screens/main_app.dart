@@ -22,46 +22,54 @@ class _MainAppState extends State<MainApp> {
   int _currentIndex = 0; // chuyen tab
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: IndexedStack( // ket hop voi bottomNavigationBar de dieu khien trang thai khi an
-        index: _currentIndex,
-        children: [
-          HomeScreen(),
-          RattingScreen(),
-          BookingFlightScreen(),
-          ProfileScreen(),
-        ],
-      ),
-      bottomNavigationBar: SalomonBottomBar( // tao ra 1 thanh buttom bar bang thu vien
-        currentIndex: _currentIndex,
-        onTap: (index){
-          setState(() { // khong toi uu performent
-            _currentIndex = index; // khi nguoi dung an vao icon thi mau se chuyen theo
-          });
-        },
-        items: [
-          SalomonBottomBarItem( // su dung thu vien
-            icon: Icon(FontAwesomeIcons.house,
-            size: kDefaultIconSize,),
-            title: Text("Home"),
-          ),
-          SalomonBottomBarItem( // su dung thu vien
-            icon: Icon(FontAwesomeIcons.solidHeart,
+    return GestureDetector(
+      behavior: HitTestBehavior
+          .translucent, // Cho phép GestureDetector bắt sự kiện trên toàn bộ khu vực widget
+      onTap: () {
+        // Khi bên ngoài form được chạm, ẩn bàn phím bằng cách mất trọng tâm
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: IndexedStack( // ket hop voi bottomNavigationBar de dieu khien trang thai khi an
+          index: _currentIndex,
+          children: const [
+            HomeScreen(),
+            RattingScreen(),
+            BookingFlightScreen(),
+            ProfileScreen(),
+          ],
+        ),
+        bottomNavigationBar: SalomonBottomBar( // tao ra 1 thanh buttom bar bang thu vien
+          currentIndex: _currentIndex,
+          onTap: (index){
+            setState(() { // khong toi uu performent
+              _currentIndex = index; // khi nguoi dung an vao icon thi mau se chuyen theo
+            });
+          },
+          items: [
+            SalomonBottomBarItem( // su dung thu vien
+              icon: Icon(FontAwesomeIcons.house,
               size: kDefaultIconSize,),
-            title: Text("Likes"),
-          ),
-          SalomonBottomBarItem( // su dung thu vien
-            icon: Icon(FontAwesomeIcons.briefcase,
-              size: kDefaultIconSize,),
-            title: Text("Booking"),
-          ),
-          SalomonBottomBarItem( // su dung thu vien
-            icon: Icon(FontAwesomeIcons.solidUser,
-              size: kDefaultIconSize,),
-            title: Text("Profile"),
-          ),
-        ],
+              title: Text("Home"),
+            ),
+            SalomonBottomBarItem( // su dung thu vien
+              icon: Icon(FontAwesomeIcons.solidHeart,
+                size: kDefaultIconSize,),
+              title: Text("Likes"),
+            ),
+            SalomonBottomBarItem( // su dung thu vien
+              icon: Icon(FontAwesomeIcons.briefcase,
+                size: kDefaultIconSize,),
+              title: Text("Booking"),
+            ),
+            SalomonBottomBarItem( // su dung thu vien
+              icon: Icon(FontAwesomeIcons.solidUser,
+                size: kDefaultIconSize,),
+              title: Text("Profile"),
+            ),
+          ],
+        ),
       ),
     );
   }

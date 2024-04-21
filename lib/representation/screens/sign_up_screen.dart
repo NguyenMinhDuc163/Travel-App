@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _phoneNumberController = TextEditingController();
-
+  String? selectedValue = 'Vietnamese';
   final FirebaseAuthService _auth = FirebaseAuthService();
   bool isSign = false;
   @override
@@ -39,7 +39,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String? selectedValue = 'Vietnamese';
     return AppBarContinerWidget(
       titleString: 'Sign Up',
       child: SingleChildScrollView(

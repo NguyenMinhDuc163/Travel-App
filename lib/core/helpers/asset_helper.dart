@@ -31,6 +31,11 @@ mixin AssetHelper {
   static const String icoLocalFlight = 'assets/icons/ico_local_flight.png';
   static const String icoPersonFlight = 'assets/icons/ico_person_flight.png';
   static const String icoAddCode = 'assets/icons/ico_add_code.png';
+  static const String cardBank = 'assets/icons/card_bank.png';
+  static const String icoMarket = 'assets/icons/ico_marker.png';
+  static const String icoPayment = 'assets/icons/ico_payment.png';
+  static const String icobank = 'assets/icons/ico_bank.png';
+
 
   //Assets in images
   static const String backgroundSplash = 'assets/images/background_splash.png';
@@ -55,4 +60,6 @@ mixin AssetHelper {
   static const String comment1 = 'assets/images/comment_1.png';
   static const String comment2 = 'assets/images/comment_2.png';
   static const String avatarProfile = 'assets/images/avatar_profile.png';
+  static const String logoAir = 'assets/images/logo_air.jpg';
+  static const String barCode = 'assets/images/barcode.png';
 }

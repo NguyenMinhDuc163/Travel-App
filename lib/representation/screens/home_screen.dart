@@ -12,6 +12,7 @@ import 'hotel_booking_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  static const String routeName = '/hotel_screen';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

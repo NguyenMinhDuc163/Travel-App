@@ -26,102 +26,110 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return AppBarContinerWidget(
-      titleString: "Profile",
-      subTitleString: Provider.of<UserProvider>(context, listen: false).user?.userName.toString() ?? 'nguyen van a',
-      email: Provider.of<UserProvider>(context, listen: false).user?.email.toString() ?? 'abc@gmail.com',
-      avatar: AssetHelper.avatarProfile,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: kDefaultPadding * 3,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'My account',
-              description: 'Make changes to your account',
-              iconFWA: FontAwesomeIcons.user,
-              onTap: (){
-                Navigator.of(context).pushNamed(UserProfileScreen.routeName);
-              },
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'Saved Beneficiary',
-              description: 'Manage your saved account',
-              iconFWA: FontAwesomeIcons.user,
-              onTap: (){
-                Navigator.of(context).pushNamed(SplashScreen.routeName);
-              },
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'Face ID / Touch ID',
-              description: 'Manage your device security',
-              iconFWA: FontAwesomeIcons.lock,
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'Two-Factor Authentication',
-              description: 'Further secure your account for safety',
-              iconFWA: FontAwesomeIcons.shield,
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'Log out',
-              description: 'Further secure your account for safety',
-              iconFWA: FontAwesomeIcons.rightToBracket,
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushNamed(LoginScreen.routeName);
-                showToast(message: 'Successfully logged out');
-              },
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            Text(
-              'More',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'Help & Support',
-              description: 'Help & Support',
-              iconFWA: FontAwesomeIcons.bell,
-              onTap: () {},
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            ItemBookingWidget(
-              icon: AssetHelper.person,
-              title: 'About App',
-              description: 'About App',
-              iconFWA: FontAwesomeIcons.heart,
-              onTap: () {},
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-          ],
+    return GestureDetector(
+      behavior: HitTestBehavior
+          .translucent, // Cho phép GestureDetector bắt sự kiện trên toàn bộ khu vực widget
+      onTap: () {
+        // Khi bên ngoài form được chạm, ẩn bàn phím bằng cách mất trọng tâm
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: AppBarContinerWidget(
+        titleString: "Profile",
+        subTitleString: Provider.of<UserProvider>(context, listen: false).user?.userName.toString() ?? 'nguyen van a',
+        email: Provider.of<UserProvider>(context, listen: false).user?.email.toString() ?? 'abc@gmail.com',
+        avatar: AssetHelper.avatarProfile,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: kDefaultPadding * 3,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'My account',
+                description: 'Make changes to your account',
+                iconFWA: FontAwesomeIcons.user,
+                onTap: (){
+                  Navigator.of(context).pushNamed(UserProfileScreen.routeName);
+                },
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'Saved Beneficiary',
+                description: 'Manage your saved account',
+                iconFWA: FontAwesomeIcons.user,
+                onTap: (){
+                  Navigator.of(context).pushNamed(SplashScreen.routeName);
+                },
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'Face ID / Touch ID',
+                description: 'Manage your device security',
+                iconFWA: FontAwesomeIcons.lock,
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'Two-Factor Authentication',
+                description: 'Further secure your account for safety',
+                iconFWA: FontAwesomeIcons.shield,
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'Log out',
+                description: 'Further secure your account for safety',
+                iconFWA: FontAwesomeIcons.rightToBracket,
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushNamed(LoginScreen.routeName);
+                  showToast(message: 'Successfully logged out');
+                },
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              Text(
+                'More',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'Help & Support',
+                description: 'Help & Support',
+                iconFWA: FontAwesomeIcons.bell,
+                onTap: () {},
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              ItemBookingWidget(
+                icon: AssetHelper.person,
+                title: 'About App',
+                description: 'About App',
+                iconFWA: FontAwesomeIcons.heart,
+                onTap: () {},
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+            ],
+          ),
         ),
       ),
     );

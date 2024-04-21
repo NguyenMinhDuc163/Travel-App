@@ -5,13 +5,17 @@ import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
 import 'package:travel_app/data/models/room_model.dart';
+import 'package:travel_app/representation/screens/payment_method_screen.dart';
 import 'package:travel_app/representation/screens/promo_code_screen.dart';
+import 'package:travel_app/representation/screens/ticket_stub_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
 import 'package:travel_app/representation/widgets/item_booking_widget.dart';
 import 'package:travel_app/representation/widgets/item_room_booking_widget.dart';
 
 import '../../core/constants/textstyle_ext.dart';
+import '../widgets/item_option_checkout_widget.dart';
+import '../widgets/item_step_checkout.dart';
 import 'contact_details_screen.dart';
 import 'main_app.dart';
 
@@ -30,117 +34,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     'Confirm',
   ];
 
-  Widget _buildItemOptionsCheckout(
-      String icon, String title, String value, BuildContext context, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(kDefaultPadding),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(kDefaultPadding)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                ImageHelper.loadFromAsset(
-                  icon,
-                ),
-                SizedBox(
-                  width: kDefaultPadding,
-                ),
-                Text(
-                  title,
-                  style: TextStyles.defaultStyle.bold,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: kMediumPadding,
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              decoration: BoxDecoration(
-                color: ColorPalette.primaryColor.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(
-                  40,
-                ),
-              ),
-              padding: EdgeInsets.all(kMinPadding),
-              child: Row(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(kMediumPadding),
-                      color: Colors.white,
-                    ),
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.add,
-                    ),
-                  ),
-                  SizedBox(width: kDefaultPadding),
-                  Text(
-                    value,
-                    style: TextStyles.defaultStyle.primaryTextColor.bold,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildItemStepCheckOut(
-      int step, String stepName, bool isEnd, bool isCheck) {
-    return Row(
-      children: [
-        Container(
-          width: kMediumPadding,
-          height: kMediumPadding,
-          decoration: BoxDecoration(
-            color: isCheck ? Colors.white : Colors.white.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(kMediumPadding),
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            step.toString(),
-            style: TextStyle(
-              color: isCheck ? Colors.black : Colors.white,
-            ),
-          ),
-        ),
-        SizedBox(
-          width: kMinPadding,
-        ),
-        Text(
-          stepName,
-          style: TextStyle(color: Colors.white, fontSize: 10),
-        ),
-        SizedBox(
-          width: kMinPadding,
-        ),
-        if (!isEnd)
-          SizedBox(
-            width: kDefaultPadding,
-            child: Divider(
-              height: 1,
-              thickness: 1,
-              color: Colors.white,
-            ),
-          ),
-        if (!isEnd)
-          SizedBox(
-            width: kMinPadding,
-          ),
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,11 +44,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         children: [
           Row(
             children: listSteps
-                .map((e) => _buildItemStepCheckOut(
-                    listSteps.indexOf(e) + 1,
-                    e,
-                    listSteps.indexOf(e) == listSteps.length - 1,
-                    listSteps.indexOf(e) == 0))
+                .map((e) => ItemStepCheckOut(
+                      step: listSteps.indexOf(e) + 1,
+                      stepName: e,
+                      isEnd: listSteps.indexOf(e) == listSteps.length - 1,
+                      isCheck: listSteps.indexOf(e) == 0,
+                    ))
                 .toList(),
           ),
           SizedBox(
@@ -178,24 +72,29 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 SizedBox(
                   height: kDefaultPadding,
                 ),
-                _buildItemOptionsCheckout(AssetHelper.icoUser, 'Contact detail',
-                    'Add contact', context, (){
-                      Navigator.of(context).pushNamed(ContactDetailsScreen.routeName);
-                    }),
+
+                ItemOptionsCheckoutWidget(icon: AssetHelper.icoUser, title: 'Contact detail', value: 'Add contact',
+                  context: context, onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(ContactDetailsScreen.routeName);
+                  },),
                 SizedBox(
                   height: kDefaultPadding,
                 ),
-                _buildItemOptionsCheckout(AssetHelper.icoPromo, 'Promo code',
-                    'Add promo code', context, (){
-                        Navigator.of(context).pushNamed(PromoCodeScreen.routeName);
-                    }),
+
+                ItemOptionsCheckoutWidget(icon: AssetHelper.icoPromo, title: 'Promo code', value: 'Add promo code',
+                  context: context, onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(PromoCodeScreen.routeName);
+                  },),
                 SizedBox(
                   height: kDefaultPadding,
                 ),
                 ButtonWidget(
                   title: 'Payment',
                   ontap: () {
-                    Navigator.of(context).pushNamed(ContactDetailsScreen.routeName);
+                    Navigator.of(context)
+                        .pushNamed(PaymentMethodScreen.routeName);
                   },
                 ),
                 SizedBox(

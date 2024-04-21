@@ -10,6 +10,7 @@ import 'package:travel_app/global/common/toast.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/home_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
+import 'package:travel_app/representation/screens/ticket_stub_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:travel_app/representation/widgets/buttom_widget.dart';
 import 'package:travel_app/user_auth/fiirebase_auth_immplemmentation/firebase_auth_services.dart';
@@ -207,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    //TODO login with facebook
+                    Navigator.of(context).pushNamed(TicketStubScreen.routeName);
                   },
                   child: Stack(
                     alignment: Alignment.center,

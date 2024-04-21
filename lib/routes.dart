@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/data/models/room_model.dart';
+import 'package:travel_app/representation/screens/add_card_screen.dart';
 import 'package:travel_app/representation/screens/booking_flight_screen.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
 import 'package:travel_app/representation/screens/contact_details_screen.dart';
@@ -14,6 +15,7 @@ import 'package:travel_app/representation/screens/hotels_screen.dart';
 import 'package:travel_app/representation/screens/intro_screen.dart';
 import 'package:travel_app/representation/screens/login_screen.dart';
 import 'package:travel_app/representation/screens/main_app.dart';
+import 'package:travel_app/representation/screens/payment_method_screen.dart';
 import 'package:travel_app/representation/screens/payment_screen.dart';
 import 'package:travel_app/representation/screens/profile_screen.dart';
 import 'package:travel_app/representation/screens/promo_code_screen.dart';
@@ -22,6 +24,7 @@ import 'package:travel_app/representation/screens/select_date_screen.dart';
 import 'package:travel_app/representation/screens/select_room_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
 import 'package:travel_app/representation/screens/splash_screen.dart';
+import 'package:travel_app/representation/screens/ticket_stub_screen.dart';
 import 'package:travel_app/representation/screens/user_profile_sceen.dart';
 import 'package:travel_app/test.dart';
 
@@ -32,7 +35,7 @@ final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => const SplashScreen(),
   IntroScreen.routeName: (context) => const IntroScreen(),
   MainApp.routeName: (context) => const MainApp(),
-  HotelScreen.routeName: (context) => const HotelScreen(),
+  HomeScreen.routeName: (context) => const HomeScreen(),
   SelectDateScreen.routeName: (context) => SelectDateScreen(),
   GuestAndRoomBookingScreen.routeName: (context) => GuestAndRoomBookingScreen(),
   HotelsScreen.routeName: (context) => HotelsScreen(),
@@ -47,6 +50,9 @@ final Map<String, WidgetBuilder> routes = {
   ContactDetailsScreen.routeName: (context) => ContactDetailsScreen(),
   PromoCodeScreen.routeName: (context) => PromoCodeScreen(),
   PaymentScreen.routeName: (context) => PaymentScreen(),
+  TicketStubScreen.routeName: (context) => TicketStubScreen(),
+  PaymentMethodScreen.routeName: (context) => PaymentMethodScreen(),
+  AddCardScreen.routeName: (context) => AddCardScreen(),
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
