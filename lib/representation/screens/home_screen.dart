@@ -8,6 +8,7 @@ import '../../core/constants/textstyle_ext.dart';
 import '../../core/helpers/asset_helper.dart';
 import '../../core/helpers/image_helper.dart';
 import '../../provider/UserProvider.dart';
+import 'flight_detel_screen.dart';
 import 'hotel_booking_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -239,7 +240,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: kDefaultIconSize,
                     ),
                     Color(0xffF77777),
-                    () {},
+                    () {
+
+                      Navigator.of(context).pushNamed(FlightDetailScreen.routeName);
+                    },
                     'Flights'),
               ),
               SizedBox(width: kDefaultPadding),

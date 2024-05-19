@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
@@ -35,7 +36,15 @@ class _PromoCodeScreenState extends State<PromoCodeScreen> {
               suffixIcon: GestureDetector(
                 onTap: () {
                   // Xử lý khi nút ấn được nhấn
-                  print('Button pressed');
+                  Fluttertoast.showToast(
+                      msg: 'Invalid Promotion Code',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.blue,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                 },
                 child: ImageHelper.loadFromAsset(AssetHelper.icoAddCode)
               ),

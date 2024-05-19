@@ -12,7 +12,7 @@ class InfoFlightWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Container(
-      width: 325, height: 70,
+      width: double.infinity, height: 70,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(kDefaultPadding)),
         color: Colors.white,

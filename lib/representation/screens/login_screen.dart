@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               style: TextStyle(fontSize: 18, color: Colors.black),
               controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -182,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
 
               children: [
-                GestureDetector(
+                Expanded(child: GestureDetector(
                   onTap: _signInWithGoogle,
                   child: Stack(
                     alignment: Alignment.center,
@@ -205,8 +206,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                ),
-                GestureDetector(
+                ),),
+                Expanded(child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed(TicketStubScreen.routeName);
                   },
@@ -233,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                )
+                ))
               ],
             ),
             SizedBox(

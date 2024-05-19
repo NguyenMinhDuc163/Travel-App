@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/color_constants.dart';
 import 'package:travel_app/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/provider/UserProvider.dart';
+import 'package:travel_app/provider/hotel_booking_provider.dart';
 import 'package:travel_app/representation/screens/splash_screen.dart';
 import 'package:travel_app/routes.dart';
 
@@ -22,6 +23,8 @@ Future main() async {
   await LocalStorageHelper.initLocalStorageHelper(); // khoi tao LocalStorage
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => UserProvider()),
+    ChangeNotifierProvider(create: (_) => HotelBookingProvider()),
+
   ],
     child: const MyApp(),
   ));

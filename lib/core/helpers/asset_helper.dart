@@ -49,9 +49,13 @@ mixin AssetHelper {
   static const String hotel1 = 'assets/images/hotel1.png';
   static const String hotel2 = 'assets/images/hotel2.png';
   static const String hotel3 = 'assets/images/hotel3.png';
+  static const String hotel4 = 'assets/images/hotel4.jpg';
+  static const String hotel5 = 'assets/images/hotel5.jpg';
   static const String room1 = 'assets/images/room1.png';
   static const String room2 = 'assets/images/room2.png';
   static const String room3 = 'assets/images/room3.png';
+  static const String room4 = 'assets/images/room4.jpeg';
+  static const String room5 = 'assets/images/room5.jpg';
   static const String korea = 'assets/images/korea.png';
   static const String turkey = 'assets/images/turkey.png';
   static const String japan = 'assets/images/japan.png';
@@ -62,4 +66,10 @@ mixin AssetHelper {
   static const String avatarProfile = 'assets/images/avatar_profile.png';
   static const String logoAir = 'assets/images/logo_air.jpg';
   static const String barCode = 'assets/images/barcode.png';
+  static const String bamboLogo = 'assets/images/bambo_logo.jpg';
+  static const String jalLogo = 'assets/images/jal_logo.jpg';
+  static const String jetstarLogo = 'assets/images/jetstart_logo.jpg';
+  static const String vietjetLogo = 'assets/images/vietjet_logo.jpeg';
+  static const String vietnamAirlineLogo = 'assets/images/vnairline-logo.jpg';
+  static const String airplaneSeats = 'assets/images/airplaneSeats.png';
 }

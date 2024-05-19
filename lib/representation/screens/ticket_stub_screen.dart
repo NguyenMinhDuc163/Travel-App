@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ import '../widgets/buttom_widget.dart';
 import '../widgets/dashline_widge.dart';
 import '../widgets/invoid_widget.dart';
 import '../widgets/item_step_checkout.dart';
+import 'hotel_invoice_screen.dart';
 import 'hotel_screen.dart';
 import 'main_app.dart';
 
@@ -188,6 +190,15 @@ class _TicketStubScreenState extends State<TicketStubScreen> {
               ButtonWidget(
                 title: 'Pay now',
                 ontap: () {
+                  Fluttertoast.showToast(
+                      msg: 'Payment success',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.blue,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                   Navigator.of(context)
                       .pushNamed(MainApp.routeName);
                 },

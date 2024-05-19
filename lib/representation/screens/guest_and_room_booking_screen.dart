@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
 import '../../core/constants/color_constants.dart';
+import '../../provider/hotel_booking_provider.dart';
 import '../widgets/buttom_widget.dart';
 import '../widgets/item_add_guest_and_room.dart';
 
@@ -29,12 +31,21 @@ class _GuestAndRoomBookingScreenState extends State<GuestAndRoomBookingScreen> {
             title: 'Guest',
             icon: AssetHelper.icoGuest,
             initDate: 2,
+            onValueChanged: (int value) {
+              Provider.of<HotelBookingProvider>(context, listen: false)
+                  .setGuest(value);
+            },
+
           ),
 
           ItemAddGuestAndRoom(
             title: 'Room',
             icon: AssetHelper.icoBed,
             initDate: 1,
+            onValueChanged: (int value) {
+              Provider.of<HotelBookingProvider>(context, listen: false)
+                  .setRoom(value);
+            },
           ),
 
           ButtonWidget(

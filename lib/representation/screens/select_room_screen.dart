@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/constants/dimension_constants.dart';
 import '../../core/helpers/asset_helper.dart';
 import '../../data/models/room_model.dart';
+import '../../provider/hotel_booking_provider.dart';
 import '../widgets/app_bar_container.dart';
 import '../widgets/item_room_booking_widget.dart';
 import 'check_out_screen.dart';
@@ -18,26 +20,41 @@ class _SelectRoomScreenState extends State<SelectRoomScreen> {
   final List<RoomModel> listRoom = [
     RoomModel(
       roomImage: AssetHelper.room1,
-      roomName: 'Deluxe Room',
+      roomName: 'Phòng Deluxe',
       size: 27,
-      utility: 'Free Cancellation',
+      utility: 'Hủy miễn phí',
       price: 245,
     ),
     RoomModel(
       roomImage: AssetHelper.room2,
-      roomName: 'Executive Suite',
+      roomName: 'Phòng Suite Executive',
       size: 32,
-      utility: 'Non-refundable',
+      utility: 'Không hoàn tiền',
       price: 289,
     ),
     RoomModel(
       roomImage: AssetHelper.room3,
-      roomName: 'King Bed Only Room',
+      roomName: 'Phòng Giường King',
       size: 24,
-      utility: 'Non-refundable',
+      utility: 'Không hoàn tiền',
       price: 214,
     ),
+    RoomModel(
+      roomImage: AssetHelper.room4,
+      roomName: 'Phòng Superior',
+      size: 30,
+      utility: 'Hủy miễn phí',
+      price: 260,
+    ),
+    RoomModel(
+      roomImage: AssetHelper.room5,
+      roomName: 'Phòng Standard',
+      size: 22,
+      utility: 'Không hoàn tiền',
+      price: 200,
+    ),
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +75,9 @@ class _SelectRoomScreenState extends State<SelectRoomScreen> {
                     roomUtility: e.utility,
                     roomSize: e.size,
                     onTap: () {
+                      Provider.of<HotelBookingProvider>(context, listen: false).setRoomModel(e);
+                      print(Provider.of<HotelBookingProvider>(context, listen: false).roomModel);
+
                       Navigator.of(context).pushNamed(CheckOutScreen.routeName, arguments: e);
                     }, numberOfRoom: null,
                   ),

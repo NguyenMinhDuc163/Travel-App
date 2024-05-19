@@ -111,13 +111,16 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                       child: ListView(
                         controller: scrollController,
                         children: [
+                          Text(
+                            widget.hotelModel.hotelName,
+                            style: TextStyles.defaultStyle.fontHeader.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                            height: kDefaultPadding,
+                          ),
                           Row(
-                            children: [
-                              Text(
-                                widget.hotelModel.hotelName,
-                                style: TextStyles.defaultStyle.fontHeader.bold,
-                              ),
-                              Spacer(),
+                            children:[
                               Text(
                                 '\$${widget.hotelModel.price.toString()}',
                                 style: TextStyles.defaultStyle.fontHeader.bold,
@@ -126,8 +129,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                                 ' /night',
                                 style: TextStyles.defaultStyle.fontCaption,
                               ),
-                            ],
+                            ]
                           ),
+
                           SizedBox(
                             height: kDefaultPadding,
                           ),

@@ -2,14 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/data/models/room_model.dart';
 import 'package:travel_app/representation/screens/add_card_screen.dart';
+import 'package:travel_app/representation/screens/airplane_seats_choosee_screen.dart';
 import 'package:travel_app/representation/screens/booking_flight_screen.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
 import 'package:travel_app/representation/screens/contact_details_screen.dart';
+import 'package:travel_app/representation/screens/flight_detel_screen.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
 import 'package:travel_app/representation/screens/guest_and_room_booking_screen.dart';
 import 'package:travel_app/representation/screens/home_screen.dart';
 import 'package:travel_app/representation/screens/hotel_booking_screen.dart';
 import 'package:travel_app/representation/screens/hotel_detail_screen.dart';
+import 'package:travel_app/representation/screens/hotel_invoice_screen.dart';
 import 'package:travel_app/representation/screens/hotel_screen.dart';
 import 'package:travel_app/representation/screens/hotels_screen.dart';
 import 'package:travel_app/representation/screens/intro_screen.dart';
@@ -53,6 +56,11 @@ final Map<String, WidgetBuilder> routes = {
   TicketStubScreen.routeName: (context) => TicketStubScreen(),
   PaymentMethodScreen.routeName: (context) => PaymentMethodScreen(),
   AddCardScreen.routeName: (context) => AddCardScreen(),
+  FlightDetailScreen.routeName: (context) => FlightDetailScreen(),
+  AirplaneSeatsChooseScreen.routeName: (context) => AirplaneSeatsChooseScreen(),
+  HotelInvoiceScreen.routeName: (context) => HotelInvoiceScreen(),
+
+
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {

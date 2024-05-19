@@ -28,7 +28,6 @@ class FlightWidget extends StatelessWidget {
           height: kDefaultPadding,
         ),
         Container(
-            margin: EdgeInsets.symmetric(horizontal: 4),
             child: InfoFlightWidget(
                 icon: AssetHelper.icoLocalFlight,
                 textUp: 'To',

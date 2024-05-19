@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
+import 'package:travel_app/representation/screens/hotel_invoice_screen.dart';
 import 'package:travel_app/representation/screens/ticket_stub_screen.dart';
 
 import '../../core/constants/color_constants.dart';
@@ -128,7 +129,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 title: 'Pay now',
                 ontap: () {
                   Navigator.of(context)
-                      .pushNamed(TicketStubScreen.routeName);
+                      .pushNamed(HotelInvoiceScreen.routeName);
                 },
               ),
               SizedBox(

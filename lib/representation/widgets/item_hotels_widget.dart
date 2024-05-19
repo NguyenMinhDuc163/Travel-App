@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/color_constants.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
@@ -7,6 +8,7 @@ import 'package:travel_app/representation/widgets/buttom_widget.dart';
 import 'package:travel_app/representation/widgets/dashline_widge.dart';
 
 import '../../data/models/hotel_model.dart';
+import '../../provider/hotel_booking_provider.dart';
 import '../screens/hotel_detail_screen.dart';
 
 class ItemHotelWidget extends StatelessWidget {
@@ -107,6 +109,9 @@ class ItemHotelWidget extends StatelessWidget {
                       child: ButtonWidget(
                         title: "Book a room",
                         ontap: () {
+                          Provider.of<HotelBookingProvider>(context, listen: false)
+                              .setHotelModel(hotelModel);
+
                           Navigator.of(context).pushNamed(
                               HotelDetailScreen.routeName,
                               arguments: hotelModel);

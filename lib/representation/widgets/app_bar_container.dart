@@ -20,6 +20,7 @@ class AppBarContinerWidget extends StatelessWidget {
       horizontal: kMediumPadding,
     ),
     this.avatar, this.email,
+    this.positon,
   })  : assert(title != null || titleString != null,
             'title or titleString can\'t be null'),
         super(key: key);
@@ -33,6 +34,7 @@ class AppBarContinerWidget extends StatelessWidget {
   final EdgeInsets? paddingContent;
   final String? avatar;
   final String? email;
+  final bool? positon;
 
   @override
   Widget build(BuildContext context) {
@@ -156,8 +158,8 @@ class AppBarContinerWidget extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 156),
-            padding: paddingContent,
+            margin: (positon == null) ? EdgeInsets.only(top: 156) : null,
+            padding:(positon == null) ? paddingContent : null,
             child: child,
           ),
         ],

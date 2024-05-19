@@ -56,8 +56,10 @@ class ItemRoomBookingwidge extends StatelessWidget {
               SizedBox(
                 width: kDefaultPadding,
               ),
-              ImageHelper.loadFromAsset(roomImage,
-                  radius: BorderRadius.all(Radius.circular(kMinPadding)))
+              Expanded(child: Container(
+                child: ImageHelper.loadFromAsset(roomImage,
+                    radius: BorderRadius.all(Radius.circular(kMinPadding))),
+              ))
             ],
           ),
           ItemUtilityWidge(),
