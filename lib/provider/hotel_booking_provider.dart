@@ -1,17 +1,24 @@
 import 'package:flutter/cupertino.dart';
+import 'package:travel_app/data/models/flight_model.dart';
 
 import '../data/models/hotel_model.dart';
 import '../data/models/room_model.dart';
 import '../data/models/user_contact_model.dart';
 
 class HotelBookingProvider extends ChangeNotifier{
-  DateTime? dateStart;
+  DateTime? dateStart = DateTime.now();
   DateTime? dateEnd;
   int? guest = 1;
   int? room = 2;
   HotelModel? hotelModel;
   RoomModel? roomModel;
   UserContactModel? userContactModel;
+  Flight? flight;
+
+  void setFlight(Flight flight) {
+    this.flight = flight;
+    notifyListeners();
+  }
 
   void setUserModel(UserContactModel userContactModel) {
     this.userContactModel = userContactModel;

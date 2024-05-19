@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/constants/dimension_constants.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
+import 'package:travel_app/provider/hotel_booking_provider.dart';
 
 import 'dashline_widge.dart';
 
 class InvoidWidget extends StatefulWidget {
-  const InvoidWidget({super.key, required this.airline, required this.passenger, required this.logo});
+  const InvoidWidget({super.key, required this.airline, required this.passenger, required this.logo, this.checkInvoice});
   final String airline;
   final String passenger;
   final String logo;
+  final bool? checkInvoice;
   @override
   State<InvoidWidget> createState() => _InvoidWidgetState();
 }
@@ -44,12 +47,25 @@ class _InvoidWidgetState extends State<InvoidWidget> {
                     child: Image.asset(widget.logo, width: 60, height: 60,) ),
               ),
               SizedBox(width: kDefaultPadding,),
-              Expanded(child: columCustom("Airline", "VietNam Airline"), flex: 2,),
-              Expanded(child: columCustom("Passengers", "Nguyen Minh Duc"), flex: 2,),
+              Expanded(child: columCustom(widget.checkInvoice  != null ? "Hotel" : "Airline", widget.airline), flex: 2,),
+              Expanded(child: columCustom("Passengers", widget.passenger), flex: 2,),
             ],
           ),
 
           SizedBox(height: kDefaultPadding,),
+          widget.checkInvoice != null?
+              Consumer<HotelBookingProvider>(
+                builder: (context, data, _){
+                  return Row(
+                    children: [
+                      Expanded(flex: 2,child: columCustom("Check-in", data.dateStart.toString()),),
+                      Expanded(child: columCustom("Room", data.room.toString()),),
+                      Expanded(child: columCustom("Guest", data.guest.toString())),
+                    ],
+                  );
+                },
+              )
+              :
           Row(
             children: [
               Expanded(child: columCustom("Date", "24 Mar 2020"), flex: 2,),

@@ -8,7 +8,6 @@ import 'package:travel_app/core/helpers/asset_helper.dart';
 import 'package:travel_app/core/helpers/image_helper.dart';
 import 'package:travel_app/global/common/toast.dart';
 import 'package:travel_app/representation/screens/forgot_password_screen.dart';
-import 'package:travel_app/representation/screens/home_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
 import 'package:travel_app/representation/screens/ticket_stub_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
@@ -17,7 +16,7 @@ import 'package:travel_app/user_auth/fiirebase_auth_immplemmentation/firebase_au
 
 import '../../data/models/user_model.dart';
 import '../../provider/UserProvider.dart';
-import 'hotel_screen.dart';
+
 import 'main_app.dart';
 
 class LoginScreen extends StatefulWidget {

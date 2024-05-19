@@ -59,6 +59,7 @@ final Map<String, WidgetBuilder> routes = {
   FlightDetailScreen.routeName: (context) => FlightDetailScreen(),
   AirplaneSeatsChooseScreen.routeName: (context) => AirplaneSeatsChooseScreen(),
   HotelInvoiceScreen.routeName: (context) => HotelInvoiceScreen(),
+  ResetPasswordScreen.routeName: (context) => ResetPasswordScreen(),
 
 
 };

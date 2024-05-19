@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travel_app/core/helpers/asset_helper.dart';
+import 'package:travel_app/provider/hotel_booking_provider.dart';
 import 'package:travel_app/representation/screens/ticket_stub_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 
+import '../../data/models/flight_model.dart';
 import 'airplane_seats_choosee_screen.dart';
 
 class FlightDetailScreen extends StatefulWidget {
@@ -12,9 +15,53 @@ class FlightDetailScreen extends StatefulWidget {
   @override
   State<FlightDetailScreen> createState() => _FlightDetailScreenState();
 }
+List<Flight> flights = [
+  Flight(
+    airlineLogo: AssetHelper.bamboLogo,
+    from: "JKT",
+    to: "Jakarta",
+    departureTime: "10:00",
+    flightType: "Round trip flight",
+  ),
+  Flight(
+    airlineLogo: AssetHelper.jalLogo,
+    from: "Viet Nam",
+    to: "Japan",
+    departureTime: "16:00",
+    flightType: "One-way flight",
+  ),
+  Flight(
+    airlineLogo: AssetHelper.jetstarLogo,
+    from: "VietNam",
+    to: "New York",
+    departureTime: "1:00",
+    flightType: "Round trip flight",
+  ),
+  Flight(
+    airlineLogo: AssetHelper.vietjetLogo,
+    from: "Ha Noi",
+    to: "Ho Chi Minh city",
+    departureTime: "10:00",
+    flightType: "One-way flight",
+  ),
+  Flight(
+    airlineLogo: AssetHelper.vietnamAirlineLogo,
+    from: "Ha Noi",
+    to: "Da Nang",
+    departureTime: "10:00",
+    flightType: "Round trip flight",
+  ),
+  Flight(
+    airlineLogo: AssetHelper.jalLogo,
+    from: "Viet Nam",
+    to: "Japan",
+    departureTime: "16:00",
+    flightType: "One-way flight",
+  ),
+];
 
 
-Widget _buildBlockTicket(String icon, String title, String subTitle, String time, String description, {Function()? onTap}){
+Widget _buildBlockTicket(Flight flight, {Function()? onTap}){
   return InkWell(
     onTap: onTap,
     child: Container(
@@ -32,7 +79,7 @@ Widget _buildBlockTicket(String icon, String title, String subTitle, String time
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
               ),
-              child: Image.asset(icon, width: 80, height: 80,),),
+              child: Image.asset(flight.airlineLogo, width: 80, height: 80,),),
             // Line
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -43,10 +90,10 @@ Widget _buildBlockTicket(String icon, String title, String subTitle, String time
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                Text(subTitle, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                Text(time, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                Text(description, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                Text(flight.from, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                Text(flight.to, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                Text(flight.departureTime, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                Text(flight.flightType, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
               ],
             )
           ],
@@ -61,32 +108,23 @@ class _FlightDetailScreenState extends State<FlightDetailScreen> {
     return AppBarContinerWidget(
       titleString: "Flight Detail",
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            _buildBlockTicket(AssetHelper.bamboLogo, "JKT", "Jakarta", "10:00", "Round trip flight", onTap: (){
-              Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
-            }),
-            _buildBlockTicket(AssetHelper.jalLogo, "Viet Nam", "japan", "16:00", "One-way flight", onTap: (){
-              Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
-            }),
-            _buildBlockTicket(AssetHelper.jetstarLogo, "VietNam", "New York", "1:00", "Round trip flight", onTap: (){
-              Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
-            }),
-            _buildBlockTicket(AssetHelper.vietjetLogo, "Ha Noi", "Ho Chi Minh city", "10:00", "One-way flight", onTap: (){
-              Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
-            }),
-            _buildBlockTicket(AssetHelper.vietnamAirlineLogo, "Ha Noi", "Da Nang", "10:00", "Round trip flight", onTap: (){
-              Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
-            }),
-            _buildBlockTicket(AssetHelper.jalLogo, "Viet Nam", "japan", "16:00", "One-way flight", onTap: (){
-              Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
-            }),
-          ],
+        child:  SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              ...flights.map((flight) => _buildBlockTicket(flight,
+              onTap: (){
+                Provider.of<HotelBookingProvider>(context, listen: false).setFlight(flight);
+                Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
+              }
+              )).toList(),
+            ],
+          ),
         ),
       ),
+
+
+
     );
   }
 }
