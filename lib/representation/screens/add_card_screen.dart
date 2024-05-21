@@ -56,84 +56,92 @@ class _AddCardScreenState extends State<AddCardScreen> {
         // Khi bên ngoài form được chạm, ẩn bàn phím bằng cách mất trọng tâm
         FocusScope.of(context).requestFocus(FocusNode());
       },
-      child: AppBarContinerWidget(
-        titleString: 'Add Card',
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: kDefaultPadding * 3,
-              ),
-              _textFieldCustom("Name", TextInputType.text),
-              _textFieldCustom(
-                "Card Number",
-                TextInputType.number,
-                icon: AssetHelper.cardBank,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                      child:
-                          _textFieldCustom("Exp. Date", TextInputType.number)),
-                  SizedBox(
-                    width: kDefaultPadding,
-                  ),
-                  Expanded(
-                      child: _textFieldCustom("CVV", TextInputType.number)),
-                ],
-              ),
-              Container(
-                height: 60,
-                width: double.infinity,
-                padding: EdgeInsets.all(kDefaultPadding),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade50,
-                  border: Border.all(
-                    color: Colors.black38, // Màu viền
-                    width: 1, // Độ dày của viền
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(5))
+      child: GestureDetector(
+        behavior: HitTestBehavior
+            .translucent, // Cho phép GestureDetector bắt sự kiện trên toàn bộ khu vực widget
+        onTap: () {
+          // Khi bên ngoài form được chạm, ẩn bàn phím bằng cách mất trọng tâm
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
+        child: AppBarContinerWidget(
+          titleString: 'Add Card',
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: kDefaultPadding * 3,
                 ),
-                child:DropdownButton<String>(
-                  value: _selectedValue,
-                  onChanged: (String? value) {
-                    setState(() {
-                      _selectedValue = value;
-                    });
-                  },
-                  items: <String>['Vietnamese', 'Myanmar', 'Japan', 'China']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Row(
-                        children: [
-                          Icon(FontAwesomeIcons.earthAsia), // Icon
-                          SizedBox(width: 10), // Khoảng cách
-                          Text(value), // Text
-                        ],
+                _textFieldCustom("Name", TextInputType.text),
+                _textFieldCustom(
+                  "Card Number",
+                  TextInputType.number,
+                  icon: AssetHelper.cardBank,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                        child:
+                        _textFieldCustom("Exp. Date", TextInputType.number)),
+                    SizedBox(
+                      width: kDefaultPadding,
+                    ),
+                    Expanded(
+                        child: _textFieldCustom("CVV", TextInputType.number)),
+                  ],
+                ),
+                Container(
+                  height: 60,
+                  width: double.infinity,
+                  padding: EdgeInsets.all(kDefaultPadding),
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade50,
+                      border: Border.all(
+                        color: Colors.black38, // Màu viền
+                        width: 1, // Độ dày của viền
                       ),
-                    );
-                  }).toList(),
-                  dropdownColor: Colors.white,
-                  isExpanded: true,
-                  underline: Container(
-                    height: 0,
-                    color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(5))
+                  ),
+                  child:DropdownButton<String>(
+                    value: _selectedValue,
+                    onChanged: (String? value) {
+                      setState(() {
+                        _selectedValue = value;
+                      });
+                    },
+                    items: <String>['Vietnamese', 'Myanmar', 'Japan', 'China']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Row(
+                          children: [
+                            Icon(FontAwesomeIcons.earthAsia), // Icon
+                            SizedBox(width: 10), // Khoảng cách
+                            Text(value), // Text
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                    dropdownColor: Colors.white,
+                    isExpanded: true,
+                    underline: Container(
+                      height: 0,
+                      color: Colors.transparent,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: kDefaultPadding),
-                child: ButtonWidget(
-                  title: 'Add Card',
-                  ontap: () {
-                    Navigator.of(context)
-                        .pushNamed(PaymentMethodScreen.routeName);
-                  },
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: kDefaultPadding),
+                  child: ButtonWidget(
+                    title: 'Add Card',
+                    ontap: () {
+                      Navigator.of(context)
+                          .pushNamed(PaymentMethodScreen.routeName);
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

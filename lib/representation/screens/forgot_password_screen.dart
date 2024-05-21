@@ -20,44 +20,48 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
   bool _isForgot = false;
   final SendEmailService _sendEmailService = SendEmailService();
+
+  bool isValidEmail(String email) {
+    // Biểu thức chính quy kiểm tra cú pháp email
+    final RegExp emailRegExp = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
+
+    // Kiểm tra email có khớp với biểu thức chính quy hay không
+    return emailRegExp.hasMatch(email);
+  }
   void resetPassword(BuildContext context) async {
     setState(() {
       _isForgot = true;
     });
+    if(isValidEmail(emailController.text) == false){
+      showToastTop(
+        message: 'Invalid email. Please check again',
+      );
+      setState(() {
+        _isForgot = false;
+      });
+      return;
+    }
 
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
-      showToast(
+      showToastTop(
         message: 'Password reset email sent successfully. Please check your email.',
       );
       Navigator.of(context).pushNamed(LoginScreen.routeName);
     } catch (e) {
-      showToast(
-        message: 'Failed to send password reset email: $e',
+      showToastTop(
+        message: 'Failed to send password reset email',
       );
+      print("log ------------------- ${e.toString()}");
     } finally {
       setState(() {
         _isForgot = false;
       });
     }
 
-    // try {
-    //   await _sendEmailService.sendEmail(
-    //     emailController.text, // Email người nhận
-    //     'Xác nhận hóa đơn',
-    //     'Hóa đơn của bạn đã được tạo thành công.',
-    //   );
-    //
-    //   // Hiển thị thông báo thành công
-    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    //     content: Text('Hóa đơn đã được tạo và email xác nhận đã được gửi.'),
-    //   ));
-    // } catch (e) {
-    //   // Hiển thị thông báo lỗi
-    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    //     content: Text('Đã xảy ra lỗi khi gửi email: $e'),
-    //   ));
-    // }
+
 
   }
 

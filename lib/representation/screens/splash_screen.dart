@@ -24,14 +24,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void redirectIntroScreen() async{
     // man hinh nay chi xuat hien trong lan khoi dong dau tien
     final ignoreIntroScreen = LocalStorageHelper.getValue('ignoreIntroScreen') as bool?;
-    await Future.delayed(const Duration(milliseconds: 800));
-    if(ignoreIntroScreen != null && ignoreIntroScreen){
-      Navigator.of(context).pushNamed(LoginScreen.routeName);
-    }
-    else{
-      LocalStorageHelper.setValue('ignoreIntroScreen', true);
-      Navigator.of(context).pushNamed(IntroScreen.routeName);
-    }
+    await Future.delayed(const Duration(milliseconds: 1000));
+    // if(ignoreIntroScreen != null && ignoreIntroScreen){
+    //   Navigator.of(context).pushNamed(LoginScreen.routeName);
+    // }
+    // else{
+    //   LocalStorageHelper.setValue('ignoreIntroScreen', true);
+    //   Navigator.of(context).pushNamed(IntroScreen.routeName);
+    // }
+    Navigator.of(context).pushNamed(IntroScreen.routeName);
   }
   @override
   Widget build(BuildContext context) {

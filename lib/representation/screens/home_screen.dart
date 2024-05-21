@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/representation/screens/search_screen.dart';
 import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -185,35 +186,40 @@ class _HomeScreenState extends State<HomeScreen> {
       implementLeading: false,
       child: Column(
         children: [
-          TextField(
-            enabled: true,
-            autocorrect: false,
-            decoration: InputDecoration(
-              hintText: 'Search your destination',
-              prefixIcon: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(
-                  FontAwesomeIcons.magnifyingGlass,
-                  color: Colors.black,
-                  size: 14,
-                ),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    kItemPadding,
+          InkWell(
+            child: TextField(
+              enabled: false,
+              autocorrect: false,
+              decoration: InputDecoration(
+                hintText: 'Search your destination',
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    FontAwesomeIcons.magnifyingGlass,
+                    color: Colors.black,
+                    size: 14,
                   ),
                 ),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      kItemPadding,
+                    ),
+                  ),
+                ),
+                contentPadding:
+                const EdgeInsets.symmetric(horizontal: kItemPadding),
               ),
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: kItemPadding),
+              style: TextStyles.defaultStyle,
+              onChanged: (value) {},
+              onSubmitted: (String submitValue) {},
             ),
-            style: TextStyles.defaultStyle,
-            onChanged: (value) {},
-            onSubmitted: (String submitValue) {},
+            onTap: (){
+              Navigator.pushNamed(context, SearchScreen.routeName);
+            },
           ),
           SizedBox(
             height: kDefaultPadding,

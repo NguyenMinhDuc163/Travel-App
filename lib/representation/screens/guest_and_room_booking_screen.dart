@@ -20,49 +20,57 @@ class GuestAndRoomBookingScreen extends StatefulWidget {
 class _GuestAndRoomBookingScreenState extends State<GuestAndRoomBookingScreen> {
   @override
   Widget build(BuildContext context) {
-    return AppBarContinerWidget(
-      titleString: "add Guest and Room",
-      child: Column(
-        children: [
-          SizedBox(
-            height: kMediumPadding * 1.5,
-          ),
-          ItemAddGuestAndRoom(
-            title: 'Guest',
-            icon: AssetHelper.icoGuest,
-            initDate: 2,
-            onValueChanged: (int value) {
-              Provider.of<HotelBookingProvider>(context, listen: false)
-                  .setGuest(value);
-            },
+    return GestureDetector(
+      behavior: HitTestBehavior
+          .translucent, // Cho phép GestureDetector bắt sự kiện trên toàn bộ khu vực widget
+      onTap: () {
+        // Khi bên ngoài form được chạm, ẩn bàn phím bằng cách mất trọng tâm
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: AppBarContinerWidget(
+        titleString: "Guest and Room",
+        child: Column(
+          children: [
+            SizedBox(
+              height: kMediumPadding * 1.5,
+            ),
+            ItemAddGuestAndRoom(
+              title: 'Guest',
+              icon: AssetHelper.icoGuest,
+              initDate: 2,
+              onValueChanged: (int value) {
+                Provider.of<HotelBookingProvider>(context, listen: false)
+                    .setGuest(value);
+              },
 
-          ),
+            ),
 
-          ItemAddGuestAndRoom(
-            title: 'Room',
-            icon: AssetHelper.icoBed,
-            initDate: 1,
-            onValueChanged: (int value) {
-              Provider.of<HotelBookingProvider>(context, listen: false)
-                  .setRoom(value);
-            },
-          ),
+            ItemAddGuestAndRoom(
+              title: 'Room',
+              icon: AssetHelper.icoBed,
+              initDate: 1,
+              onValueChanged: (int value) {
+                Provider.of<HotelBookingProvider>(context, listen: false)
+                    .setRoom(value);
+              },
+            ),
 
-          ButtonWidget(
-            title: "Search",
-            ontap: (){
-              Navigator.of(context).pop(); // se tra 1 list ve man booking
-            },
-          ),
-          SizedBox(height: kDefaultPadding,),
-          ButtonWidget(
-            title: "Cancel",
-            ontap: (){
-              Navigator.of(context).pop();
-            },
-            opacity: ColorPalette.primaryColor.withOpacity(0.1),
-          ),
-        ],
+            ButtonWidget(
+              title: "Search",
+              ontap: (){
+                Navigator.of(context).pop(); // se tra 1 list ve man booking
+              },
+            ),
+            SizedBox(height: kDefaultPadding,),
+            ButtonWidget(
+              title: "Cancel",
+              ontap: (){
+                Navigator.of(context).pop();
+              },
+              opacity: ColorPalette.primaryColor.withOpacity(0.1),
+            ),
+          ],
+        ),
       ),
     );
   }

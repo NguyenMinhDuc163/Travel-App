@@ -73,7 +73,15 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
         children: [
           Row(
             children: [
-              ImageHelper.loadFromAsset(widget.avatar),
+             SizedBox(
+                width: kMinPadding,
+
+              ),
+                CircleAvatar(
+                  radius: 20,
+                  child: ImageHelper.loadFromAsset(widget.avatar),
+
+             ),
               Column(
                 children: [
                   Text(
@@ -95,13 +103,18 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
               )
             ],
           ),
-          SizedBox(height: kMinPadding,),
+          SizedBox(height: kMinPadding * 2,),
           Row(
             children: widget.image
                 .map((e) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3.0),
               child: ClipRRect(
-                child: ImageHelper.loadFromAsset(e),
+                child: SizedBox(
+                  width: 80,
+                  height: 80,
+                  child: ImageHelper.loadFromAsset(e),
+
+                ),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
             ))

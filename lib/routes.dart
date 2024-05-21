@@ -4,6 +4,7 @@ import 'package:travel_app/data/models/room_model.dart';
 import 'package:travel_app/representation/screens/add_card_screen.dart';
 import 'package:travel_app/representation/screens/airplane_seats_choosee_screen.dart';
 import 'package:travel_app/representation/screens/booking_flight_screen.dart';
+import 'package:travel_app/representation/screens/change_password_screen.dart';
 import 'package:travel_app/representation/screens/check_out_screen.dart';
 import 'package:travel_app/representation/screens/contact_details_screen.dart';
 import 'package:travel_app/representation/screens/flight_detel_screen.dart';
@@ -23,6 +24,7 @@ import 'package:travel_app/representation/screens/payment_screen.dart';
 import 'package:travel_app/representation/screens/profile_screen.dart';
 import 'package:travel_app/representation/screens/promo_code_screen.dart';
 import 'package:travel_app/representation/screens/ratiing_screen.dart';
+import 'package:travel_app/representation/screens/search_screen.dart';
 import 'package:travel_app/representation/screens/select_date_screen.dart';
 import 'package:travel_app/representation/screens/select_room_screen.dart';
 import 'package:travel_app/representation/screens/sign_up_screen.dart';
@@ -59,7 +61,8 @@ final Map<String, WidgetBuilder> routes = {
   FlightDetailScreen.routeName: (context) => FlightDetailScreen(),
   AirplaneSeatsChooseScreen.routeName: (context) => AirplaneSeatsChooseScreen(),
   HotelInvoiceScreen.routeName: (context) => HotelInvoiceScreen(),
-  ResetPasswordScreen.routeName: (context) => ResetPasswordScreen(),
+  ChangePassWordScreen.routeName: (context) => ChangePassWordScreen(),
+  SearchScreen.routeName: (context) => SearchScreen(),
 
 
 };

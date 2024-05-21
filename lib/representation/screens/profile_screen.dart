@@ -15,6 +15,7 @@ import 'package:travel_app/representation/widgets/app_bar_container.dart';
 import '../../provider/UserProvider.dart';
 import '../../test.dart';
 import '../widgets/item_booking_widget.dart';
+import 'change_password_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -59,11 +60,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               ItemBookingWidget(
                 icon: AssetHelper.person,
-                title: 'Saved Beneficiary',
+                title: 'Change Password',
                 description: 'Manage your saved account',
                 iconFWA: FontAwesomeIcons.user,
                 onTap: (){
-                  Navigator.of(context).pushNamed(SplashScreen.routeName);
+                  Navigator.of(context).pushNamed(ChangePassWordScreen.routeName);
                 },
               ),
               SizedBox(
@@ -94,7 +95,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 iconFWA: FontAwesomeIcons.rightToBracket,
                 onTap: () {
                   FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushNamed(LoginScreen.routeName);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    LoginScreen.routeName,
+                        (Route<dynamic> route) => false,
+                  );
                   showToast(message: 'Successfully logged out');
                 },
               ),

@@ -72,4 +72,6 @@ mixin AssetHelper {
   static const String vietjetLogo = 'assets/images/vietjet_logo.jpeg';
   static const String vietnamAirlineLogo = 'assets/images/vnairline-logo.jpg';
   static const String airplaneSeats = 'assets/images/airplaneSeats.png';
+  static const String avt1 = 'assets/images/avt1.jpeg';
+  static const String avt2 = 'assets/images/avt2.jpeg';
 }

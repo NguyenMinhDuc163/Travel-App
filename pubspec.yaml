@@ -50,6 +50,7 @@ dependencies:
   provider: ^6.1.2
   intl: ^0.19.0
   mailer: ^6.1.0
+  diacritic: ^0.1.5
 
 dev_dependencies:
   flutter_test:

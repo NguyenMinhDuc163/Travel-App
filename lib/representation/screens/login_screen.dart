@@ -37,6 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
+  bool _obscurePassword = true;
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -46,223 +48,243 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AppBarContinerWidget(
-      titleString: 'Login',
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: kDefaultPadding * 5,
-            ),
-            TextField(
-              style: TextStyle(fontSize: 18, color: Colors.black),
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  labelText: 'Email',
-                  prefixIcon: Container(
-                    width: 1,
-                    child: Icon(FontAwesomeIcons.envelope),
-                  ),
-                  border: OutlineInputBorder(
+    return GestureDetector(
+      behavior: HitTestBehavior
+          .translucent, // Cho phép GestureDetector bắt sự kiện trên toàn bộ khu vực widget
+      onTap: () {
+        // Khi bên ngoài form được chạm, ẩn bàn phím bằng cách mất trọng tâm
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: AppBarContinerWidget(
+        titleString: 'Login',
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: kDefaultPadding * 5,
+              ),
+              TextField(
+                style: TextStyle(fontSize: 18, color: Colors.black),
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelText: 'Email',
+                    prefixIcon: Container(
+                      width: 1,
+                      child: Icon(FontAwesomeIcons.envelope),
+                    ),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white, width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(6)))),
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              TextField(
+                style: TextStyle(fontSize: 18, color: Colors.black),
+                obscureText: _obscurePassword,
+                controller: _passwordController,
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelText: 'Password',
+                    prefixIcon: Container(
+                      width: 1,
+                      child: Icon(FontAwesomeIcons.lock),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
                       borderSide: BorderSide(color: Colors.white, width: 1),
-                      borderRadius: BorderRadius.all(Radius.circular(6)))),
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            TextField(
-              style: TextStyle(fontSize: 18, color: Colors.black),
-              obscureText: true,
-              controller: _passwordController,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  labelText: 'Password',
-                  prefixIcon: Container(
-                    width: 1,
-                    // child: ImageHelper.loadFromAsset(AssetHelper.icoLock),
-                    child: Icon(FontAwesomeIcons.lock),
+                    )),
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Checkbox(
+                          value: _isCheck,
+                          onChanged: (bool? val) {
+                            setState(() {
+                              _isCheck = val ?? false;
+                            });
+                          }),
+                      // SizedBox(width: kDefaultPadding,),
+                      Text(
+                        'Remember me',
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                    borderSide: BorderSide(color: Colors.white, width: 1),
-                  )),
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Checkbox(
-                        value: _isCheck,
-                        onChanged: (bool? val) {
-                          setState(() {
-                            _isCheck = val ?? false;
-                          });
-                        }),
-                    // SizedBox(width: kDefaultPadding,),
-                    Text(
-                      'Remember me',
+                  SizedBox(
+                    width: kMediumPadding,
+                  ),
+                  InkWell(
+                    child: Text(
+                      'Forgot password',
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: _isPressed ? Colors.purple : Colors.blue),
+                    ),
+                    onTap: () {
+                      setState(() {
+                        if (!_isPressed) _isPressed = true;
+                        Navigator.of(context)
+                            .pushNamed(ForgotPasswordScreen.routeName);
+                      });
+                    },
+                  )
+                ],
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              //TODO login button
+              ButtonWidget(
+                title: 'Login',
+                isign: _isSigin,
+                ontap: _signIn,
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              Row(
+                children: const [
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey, // Màu của đường thẳng
+                      thickness: 1, // Độ dày của đường thẳng
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Text(
+                      'or login with',
                       style: TextStyle(
                         fontSize: 14,
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  width: kMediumPadding,
-                ),
-                InkWell(
-                  child: Text(
-                    'Forgot password',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: _isPressed ? Colors.purple : Colors.blue),
                   ),
-                  onTap: () {
-                    setState(() {
-                      if (!_isPressed) _isPressed = true;
-                      Navigator.of(context)
-                          .pushNamed(ForgotPasswordScreen.routeName);
-                    });
-                  },
-                )
-              ],
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            //TODO login button
-            ButtonWidget(
-              title: 'Login',
-              isign: _isSigin,
-              ontap: _signIn,
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            Row(
-              children: const [
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey, // Màu của đường thẳng
-                    thickness: 1, // Độ dày của đường thẳng
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text(
-                    'or login with',
-                    style: TextStyle(
-                      fontSize: 14,
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey, // Màu của đường thẳng
+                      thickness: 1, // Độ dày của đường thẳng
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Colors.grey, // Màu của đường thẳng
-                    thickness: 1, // Độ dày của đường thẳng
+                  SizedBox(
+                    height: kDefaultPadding,
                   ),
-                ),
-                SizedBox(
-                  height: kDefaultPadding,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            Row(
-
-              children: [
-                Expanded(child: GestureDetector(
-                  onTap: _signInWithGoogle,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                ],
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: _signInWithGoogle,
+                      child: Stack(
+                        alignment: Alignment.center,
                         children: [
-                          ImageHelper.loadFromAsset(AssetHelper.icoGG),
-                          SizedBox(
-                            width: kMinPadding,
+                          ImageHelper.loadFromAsset(AssetHelper.icoRectangleWhite),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ImageHelper.loadFromAsset(AssetHelper.icoGG),
+                              SizedBox(
+                                width: kMinPadding,
+                              ),
+                              Text(
+                                'Google',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              )
+                            ],
                           ),
-                          Text(
-                            'Google',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          )
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),),
-                Expanded(child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(TicketStubScreen.routeName);
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      ImageHelper.loadFromAsset(AssetHelper.icoRectangleBlue),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigator.of(context).pushNamed(TicketStubScreen.routeName);
+                      },
+                      child: Stack(
+                        alignment: Alignment.center,
                         children: [
-                          ImageHelper.loadFromAsset(AssetHelper.icoFB),
-                          SizedBox(
-                            width: kMinPadding,
+                          ImageHelper.loadFromAsset(AssetHelper.icoRectangleBlue),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ImageHelper.loadFromAsset(AssetHelper.icoFB),
+                              SizedBox(
+                                width: kMinPadding,
+                              ),
+                              Text(
+                                'Facebook',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )
+                            ],
                           ),
-                          Text(
-                            'Facebook',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          )
                         ],
                       ),
-                    ],
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: kDefaultPadding,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don’t have an account? ',
+                    style: TextStyle(fontSize: 14),
                   ),
-                ))
-              ],
-            ),
-            SizedBox(
-              height: kDefaultPadding,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Don’t have an account? ',
-                  style: TextStyle(fontSize: 14),
-                ),
-                InkWell(
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: _isCliclSignUp ? Colors.purple : Colors.blue),
-                  ),
-                  onTap: () {
-                    setState(() {
-                      if (!_isCliclSignUp) _isCliclSignUp = true;
-                    });
-                    Navigator.of(context).pushNamed(SignUpScreen.routeName);
-                  },
-                )
-              ],
-            ),
-          ],
+                  InkWell(
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: _isCliclSignUp ? Colors.purple : Colors.blue),
+                    ),
+                    onTap: () {
+                      setState(() {
+                        if (!_isCliclSignUp) _isCliclSignUp = true;
+                      });
+                      Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -296,11 +318,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
+      await _googleSignIn.signIn();
 
       if (googleSignInAccount != null) {
         final GoogleSignInAuthentication googleSignInAuthentication =
-            await googleSignInAccount.authentication;
+        await googleSignInAccount.authentication;
 
         final AuthCredential credential = GoogleAuthProvider.credential(
           idToken: googleSignInAuthentication.idToken,
@@ -308,7 +330,11 @@ class _LoginScreenState extends State<LoginScreen> {
         );
 
         await _firebaseAuth.signInWithCredential(credential);
-        Navigator.pushNamed(context, MainApp.routeName);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          MainApp.routeName,
+              (route) => false,
+        );
       }
     } catch (e) {
       showToast(message: "some error occured $e");
