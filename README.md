@@ -3,7 +3,7 @@
 ## Giới thiệu
 
 Travel App là một ứng dụng giúp người dùng dễ dàng tìm kiếm và đặt phòng khách sạn trực tuyến một cách thuận tiện. Ứng dụng cung cấp một giao diện đơn giản và thân thiện, cho phép người dùng tìm kiếm phòng khách sạn dựa trên các tiêu chí như địa điểm, giá cả, tiện nghi, đánh giá của khách hàng và nhiều yếu tố khác.
-
+ 
 ## Tính năng
 
 - **Tìm kiếm và đặt phòng khách sạn:** Người dùng có thể tìm kiếm các khách sạn theo nhiều tiêu chí khác nhau và đặt phòng trực tuyến một cách dễ dàng.
