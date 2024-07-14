@@ -1,16 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../global/common/send_mail.dart';
-import '../global/common/toast.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
+import '../../global/common/send_mail.dart';
+import '../../global/common/toast.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../utils/routes/router_names.dart';
 import 'login_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
-  static const String routeName = '/forgot_password_screen';
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
@@ -49,7 +49,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       showToastTop(
         message: 'Password reset email sent successfully. Please check your email.',
       );
-      Navigator.of(context).pushNamed(LoginScreen.routeName);
+      Navigator.of(context).pushNamed(RouteNames.loginScreen);
     } catch (e) {
       showToastTop(
         message: 'Failed to send password reset email',

@@ -2,17 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../global/common/toast.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
+import '../../global/common/toast.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
 
 
 
 class ChangePassWordScreen extends StatefulWidget {
   const ChangePassWordScreen({super.key});
 
-  static const String routeName = '/change_password_screen';
   @override
   State<ChangePassWordScreen> createState() => _ChangePassWordScreenState();
 }

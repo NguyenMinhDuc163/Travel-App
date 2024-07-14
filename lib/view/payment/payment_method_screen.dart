@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../res/core/constants/color_constants.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/constants/textstyle_ext.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import '../res/widget/item_step_checkout.dart';
+import '../../res/core/constants/color_constants.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/constants/textstyle_ext.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../res/widget/item_step_checkout.dart';
+import '../../utils/routes/router_names.dart';
 import 'add_card_screen.dart';
-import 'hotel_invoice_screen.dart';
+import '../booking/hotel_invoice_screen.dart';
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen({super.key});
-  static const String routeName = '/payment_method_screen';
   @override
   State<PaymentMethodScreen> createState() => _PaymentMethodScreenState();
 }
@@ -117,7 +117,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
               _buildRowCustom(AssetHelper.icoMarket, "Mini Market"),
               _buildRowCustom(AssetHelper.icoPayment, "Credit / Debit Card", add: InkWell(
                 onTap: (){
-                  Navigator.of(context).pushNamed(AddCardScreen.routeName);
+                  Navigator.of(context).pushNamed(RouteNames.addCardScreen);
                 },
                 child: _buildAddCard('Add Card'),
               )),
@@ -127,7 +127,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 title: 'Pay now',
                 ontap: () {
                   Navigator.of(context)
-                      .pushNamed(HotelInvoiceScreen.routeName);
+                      .pushNamed(RouteNames.hotelInvoiceScreen);
                 },
               ),
               SizedBox(

@@ -2,19 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/res/core/extentions/date_ext.dart';
-import 'package:travel_app/view/select_date_screen.dart';
+import 'package:travel_app/view/booking/guest_and_room_booking_screen.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import '../res/widget/item_booking_widget.dart';
-import 'guest_and_room_booking_screen.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../res/widget/item_booking_widget.dart';
+import '../../utils/routes/router_names.dart';
 import 'hotels_screen.dart';
+import 'select_date_screen.dart';
 
 class HotelBookingScreen extends StatefulWidget {
   const HotelBookingScreen({super.key, required this.nameDestination});
-  static const String routeName = '/hotel_booking';
   final String? nameDestination;
   @override
   State<HotelBookingScreen> createState() => _HotelBookingScreenState();
@@ -70,7 +70,7 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
                       description: dateSelected ?? getFormattedDateRange(),
                       onTap: () async {
                         final resul = await Navigator.of(context)
-                            .pushNamed(SelectDateScreen.routeName);
+                            .pushNamed(RouteNames.selectDateScreen);
                         if (!(resul as List<DateTime?>)
                             .any((element) => element == null)) {
 
@@ -90,7 +90,7 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
                     description: "${select.guest ?? "2"} Guest, ${select.room ?? "1"} Room",
                     onTap: () {
                       Navigator.of(context)
-                          .pushNamed(GuestAndRoomBookingScreen.routeName);
+                          .pushNamed(RouteNames.guestAndRoomBookingScreen);
                     }),
                 SizedBox(
                   height: kMediumPadding,
@@ -98,7 +98,7 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
                 ButtonWidget(
                   title: "Search",
                   ontap: () {
-                    Navigator.of(context).pushNamed(HotelsScreen.routeName);
+                    Navigator.of(context).pushNamed(RouteNames.hotelsScreen);
                   },
                 )
               ],

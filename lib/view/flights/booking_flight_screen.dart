@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../res/core/constants/dimension_constants.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/flight_widget.dart';
-import '../res/widget/rounded_button_widget.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/flight_widget.dart';
+import '../../res/widget/rounded_button_widget.dart';
 
 class BookingFlightScreen extends StatefulWidget {
   const BookingFlightScreen({super.key});
-  static const String routeName = '/booking_flight_screen';
   @override
   State<BookingFlightScreen> createState() => _BookingFlightScreenState();
 }

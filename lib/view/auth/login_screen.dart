@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/view/sign_up_screen.dart';
+import 'package:travel_app/view/auth/sign_up_screen.dart';
 import 'package:travel_app/viewModel/user_viewmodel.dart';
-import '../global/common/toast.dart';
-import '../models/user_model.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/core/helpers/image_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import '../user_auth/fiirebase_auth_immplemmentation/firebase_auth_services.dart';
+import '../../global/common/toast.dart';
+import '../../models/user_model.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/core/helpers/image_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../user_auth/fiirebase_auth_immplemmentation/firebase_auth_services.dart';
+import '../../utils/routes/router_names.dart';
 import 'forgot_password_screen.dart';
-import 'main_app.dart';
+import '../main_app.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-  static const String routeName = '/login_screen';
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {
                         if (!_isPressed) _isPressed = true;
                         Navigator.of(context)
-                            .pushNamed(ForgotPasswordScreen.routeName);
+                            .pushNamed(RouteNames.forgotPasswordScreen);
                       });
                     },
                   )
@@ -275,7 +275,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {
                         if (!_isCliclSignUp) _isCliclSignUp = true;
                       });
-                      Navigator.of(context).pushNamed(SignUpScreen.routeName);
+                      Navigator.of(context).pushNamed(RouteNames.signUpScreen);
                     },
                   )
                 ],
@@ -304,7 +304,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (user != null) {
       showToast(message: 'Sign in success');
-      Navigator.of(context).pushNamed(MainApp.routeName);
+      Navigator.of(context).pushNamed(RouteNames.mainApp);
     } else {
       showToast(message: 'Sign up failed');
     }
@@ -329,7 +329,7 @@ class _LoginScreenState extends State<LoginScreen> {
         await _firebaseAuth.signInWithCredential(credential);
         Navigator.pushNamedAndRemoveUntil(
           context,
-          MainApp.routeName,
+          RouteNames.mainApp,
               (route) => false,
         );
       }

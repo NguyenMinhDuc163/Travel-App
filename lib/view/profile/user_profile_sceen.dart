@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/text_form_field_widget.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/text_form_field_widget.dart';
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
   static String routeName = '/user_profile_sceen';

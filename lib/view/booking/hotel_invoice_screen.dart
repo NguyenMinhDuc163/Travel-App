@@ -4,19 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
 import 'package:travel_app/viewModel/user_viewmodel.dart';
-import '../global/common/send_mail.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import '../res/widget/dashline_widge.dart';
-import '../res/widget/invoid_widget.dart';
-import '../res/widget/item_step_checkout.dart';
-import 'main_app.dart';
+import '../../global/common/send_mail.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../res/widget/dashline_widge.dart';
+import '../../res/widget/invoid_widget.dart';
+import '../../res/widget/item_step_checkout.dart';
+import '../../utils/routes/router_names.dart';
+import '../main_app.dart';
 
 class HotelInvoiceScreen extends StatefulWidget {
   const HotelInvoiceScreen({super.key});
-  static const String routeName = '/hotel_invoice_screen';
   @override
   State<HotelInvoiceScreen> createState() => _HotelInvoiceScreenState();
 }
@@ -235,7 +235,7 @@ Hotel Nguyen Duc Hotel
                     //   textColor: Colors.white,
                     //   fontSize: 16.0,
                     // );
-                    Navigator.of(context).pushNamed(MainApp.routeName);
+                    Navigator.of(context).pushNamed(RouteNames.mainApp);
                   },
                 ),
                 SizedBox(

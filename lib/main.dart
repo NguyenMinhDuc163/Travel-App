@@ -6,7 +6,7 @@ import 'package:travel_app/res/core/constants/app_urls.dart';
 import 'package:travel_app/res/core/constants/color_constants.dart';
 import 'package:travel_app/res/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/utils/routes/routes.dart';
-import 'package:travel_app/view/splash_screen.dart';
+import 'package:travel_app/view/auth/splash_screen.dart';
 import 'package:travel_app/viewModel/user_viewmodel.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
 

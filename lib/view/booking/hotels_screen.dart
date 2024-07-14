@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:travel_app/res/widget/item_hotels_widget.dart';
-import '../models/hotel_model.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
+import '../../models/hotel_model.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
 
 class HotelsScreen extends StatefulWidget {
   const HotelsScreen({super.key});
-  static const String routeName = '/hotels_screen';
 
   @override
   State<HotelsScreen> createState() => _HotelsScreenState();

@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_app/view/select_room_screen.dart';
-import '../models/hotel_model.dart';
-import '../res/core/constants/color_constants.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/constants/textstyle_ext.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/core/helpers/image_helper.dart';
-import '../res/widget/buttom_widget.dart';
-import '../res/widget/item_utility_widge.dart';
+import 'package:travel_app/view/booking/select_room_screen.dart';
+import '../../models/hotel_model.dart';
+import '../../res/core/constants/color_constants.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/constants/textstyle_ext.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/core/helpers/image_helper.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../res/widget/item_utility_widge.dart';
+import '../../utils/routes/router_names.dart';
 
 class HotelDetailScreen extends StatefulWidget {
-  static const String routeName = '/detail_hotel_screen';
 
   const HotelDetailScreen({
     Key? key,
@@ -208,7 +208,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                             title: 'Select Room',
                             ontap: () {
                               Navigator.of(context)
-                                  .pushNamed(SelectRoomScreen.routeName);
+                                  .pushNamed(RouteNames.selectRoomScreen);
                             },
                           ),
                           SizedBox(

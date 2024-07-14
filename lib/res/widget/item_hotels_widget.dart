@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
 import '../../models/hotel_model.dart';
-import '../../view/hotel_detail_screen.dart';
+import '../../utils/routes/router_names.dart';
+import '../../view/booking/hotel_detail_screen.dart';
 import '../core/constants/color_constants.dart';
 import '../core/constants/dimension_constants.dart';
 import '../core/helpers/asset_helper.dart';
@@ -112,7 +113,7 @@ class ItemHotelWidget extends StatelessWidget {
                               .setHotelModel(hotelModel);
 
                           Navigator.of(context).pushNamed(
-                              HotelDetailScreen.routeName,
+                              RouteNames.hotelDetailScreen,
                               arguments: hotelModel);
                         },
                       ),

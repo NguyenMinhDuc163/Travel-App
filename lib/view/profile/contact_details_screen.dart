@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
-import '../models/user_contact_model.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import 'check_out_screen.dart';
+import '../../models/user_contact_model.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../utils/routes/router_names.dart';
+import '../booking/check_out_screen.dart';
 
 class ContactDetailsScreen extends StatefulWidget {
   const ContactDetailsScreen({super.key});
@@ -109,7 +110,7 @@ class _ContactDetailsScreenState extends State<ContactDetailsScreen> {
                         phoneNumberController.text, emailController.text));
                     print(Provider.of<HotelBookingViewModel>(context, listen: false).userContactModel);
                     Navigator.of(context).popUntil(
-                            (route) => route.settings.name == CheckOutScreen.routeName);
+                            (route) => route.settings.name == RouteNames.checkOutScreen);
                   },
                 )
               ],
