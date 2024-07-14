@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:travel_app/view/profile_screen.dart';
-import 'package:travel_app/view/ratiing_screen.dart';
+import 'package:travel_app/view/profile/profile_screen.dart';
+import 'package:travel_app/view/search_and_ratings/ratiing_screen.dart';
 import '../res/core/constants/dimension_constants.dart';
-import 'booking_flight_screen.dart';
-import 'home_screen.dart';
+import 'flights/booking_flight_screen.dart';
+import 'home/home_screen.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
-  static const String routeName = "/main_app";
   @override
   State<MainApp> createState() => _MainAppState();
 }

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/res/core/helpers/Text/review.dart';
+import 'package:travel_app/res/core/helpers/asset_helper.dart';
 
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/Text/review.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/evaluation_widget.dart';
-import '../res/widget/feedback_widget.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/evaluation_widget.dart';
+import '../../res/widget/feedback_widget.dart';
 class RattingScreen extends StatefulWidget {
   const RattingScreen({super.key});
-  static const String routeName = '/ratting_scrren';
   @override
   State<RattingScreen> createState() => _RattingScreenState();
 }

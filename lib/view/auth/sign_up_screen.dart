@@ -3,16 +3,16 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/user_auth/fiirebase_auth_immplemmentation/firebase_auth_services.dart';
-import '../global/common/toast.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/core/helpers/image_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
+import '../../global/common/toast.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/core/helpers/image_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../utils/routes/router_names.dart';
 import 'login_screen.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
-  static const String routeName = '/sign_up_screen';
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -371,7 +371,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     if(user != null){
       showToast(message: 'Sign up success');
-      Navigator.of(context).pushNamed(LoginScreen.routeName);
+      Navigator.of(context).pushNamed(RouteNames.loginScreen);
   }else{
       showToast(message: 'Sign up failed');
     }

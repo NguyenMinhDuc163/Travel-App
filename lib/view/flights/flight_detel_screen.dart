@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
-import '../models/flight_model.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
+import '../../models/flight_model.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../utils/routes/router_names.dart';
 import 'airplane_seats_choosee_screen.dart';
 
 class FlightDetailScreen extends StatefulWidget {
   const FlightDetailScreen({super.key});
-  static const String routeName = '/flight_detail_screen';
   @override
   State<FlightDetailScreen> createState() => _FlightDetailScreenState();
 }
@@ -113,7 +113,7 @@ class _FlightDetailScreenState extends State<FlightDetailScreen> {
               ...flights.map((flight) => _buildBlockTicket(flight,
               onTap: (){
                 Provider.of<HotelBookingViewModel>(context, listen: false).setFlight(flight);
-                Navigator.pushNamed(context, AirplaneSeatsChooseScreen.routeName);
+                Navigator.pushNamed(context, RouteNames.airplaneSeatsChooseScreen);
               }
               )).toList(),
             ],

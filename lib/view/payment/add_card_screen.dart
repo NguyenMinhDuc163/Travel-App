@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_app/view/payment_method_screen.dart';
+import 'package:travel_app/view/payment/payment_method_screen.dart';
 
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../utils/routes/router_names.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({super.key});
-  static const String routeName = '/add_card_screen';
 
   @override
   State<AddCardScreen> createState() => _AddCardScreenState();
@@ -135,7 +135,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     title: 'Add Card',
                     ontap: () {
                       Navigator.of(context)
-                          .pushNamed(PaymentMethodScreen.routeName);
+                          .pushNamed(RouteNames.paymentMethodScreen);
                     },
                   ),
                 ),

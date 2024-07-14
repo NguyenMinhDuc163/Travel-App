@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../models/hotel_model.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/item_hotels_widget.dart';
+import '../../models/hotel_model.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/item_hotels_widget.dart';
+
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
 
-  static const String routeName = '/search_screen';
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }

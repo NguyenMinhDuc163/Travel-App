@@ -9,7 +9,8 @@ import '../res/core/constants/textstyle_ext.dart';
 import '../res/core/helpers/asset_helper.dart';
 import '../res/core/helpers/image_helper.dart';
 import '../res/widget/buttom_widget.dart';
-import 'login_screen.dart';
+import '../utils/routes/router_names.dart';
+import 'auth/login_screen.dart';
 
 
 class IntroScreen extends StatefulWidget {
@@ -127,7 +128,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                 duration: const Duration(milliseconds: 200),
                                 curve: Curves.easeInSine);
                           } else {
-                            Navigator.of(context).pushNamed(LoginScreen.routeName);
+                            Navigator.of(context).pushNamed(RouteNames.loginScreen);
                           }
                         },
                       ),

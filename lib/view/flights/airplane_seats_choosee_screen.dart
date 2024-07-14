@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:travel_app/view/ticket_stub_screen.dart';
+import 'package:travel_app/view/flights/ticket_stub_screen.dart';
 
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../utils/routes/router_names.dart';
 class AirplaneSeatsChooseScreen extends StatefulWidget {
   const AirplaneSeatsChooseScreen({super.key});
-  static const String routeName = '/airplane_seats_choose_screen';
 
   @override
   State<AirplaneSeatsChooseScreen> createState() =>
@@ -92,7 +92,7 @@ class _AirplaneSeatsChooseScreenState extends State<AirplaneSeatsChooseScreen> {
               child: ButtonWidget(
                 title: 'Add Seat',
                 ontap: () {
-                  Navigator.of(context).pushNamed(TicketStubScreen.routeName);
+                  Navigator.of(context).pushNamed(RouteNames.ticketStubScreen);
                 },
               ),
             ))

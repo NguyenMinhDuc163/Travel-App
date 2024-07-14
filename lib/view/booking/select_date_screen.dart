@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../res/core/constants/color_constants.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
+import '../../res/core/constants/color_constants.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
 class SelectDateScreen extends StatelessWidget {
   SelectDateScreen({Key? key}) : super(key: key);
-  static const String routeName = '/select_date_screen';
 
   DateTime? rangeStartDate;
   DateTime? rangeEndDate;

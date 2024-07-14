@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/core/helpers/image_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import 'check_out_screen.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/core/helpers/image_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../utils/routes/router_names.dart';
+import '../booking/check_out_screen.dart';
 class PromoCodeScreen extends StatefulWidget {
   const PromoCodeScreen({super.key});
   static const routeName = 'promo_code_screen';
@@ -59,7 +60,7 @@ class _PromoCodeScreenState extends State<PromoCodeScreen> {
             SizedBox(height: kDefaultPadding,),
             ButtonWidget(title: "Done", ontap: (){
               Navigator.of(context).popUntil(
-                      (route) => route.settings.name == CheckOutScreen.routeName);
+                      (route) => route.settings.name == RouteNames.checkOutScreen);
             },),
           ],
         ),

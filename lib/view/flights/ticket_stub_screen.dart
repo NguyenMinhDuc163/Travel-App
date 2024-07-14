@@ -4,19 +4,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
 import 'package:travel_app/viewModel/user_viewmodel.dart';
-import '../global/common/send_mail.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import '../res/widget/buttom_widget.dart';
-import '../res/widget/dashline_widge.dart';
-import '../res/widget/invoid_widget.dart';
-import '../res/widget/item_step_checkout.dart';
-import 'main_app.dart';
+import '../../global/common/send_mail.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../res/widget/buttom_widget.dart';
+import '../../res/widget/dashline_widge.dart';
+import '../../res/widget/invoid_widget.dart';
+import '../../res/widget/item_step_checkout.dart';
+import '../../utils/routes/router_names.dart';
+import '../main_app.dart';
 
 class TicketStubScreen extends StatefulWidget {
   const TicketStubScreen({super.key});
-  static const String routeName = '/ticket_stub_screen';
   @override
   State<TicketStubScreen> createState() => _TicketStubScreenState();
 }
@@ -244,7 +244,7 @@ Dịch vụ Chuyển Bay XYZ
                         showDialog = false;
                       });
                       Navigator.of(context)
-                          .pushNamed(MainApp.routeName);
+                          .pushNamed(RouteNames.mainApp);
                     },
                   ),
                   SizedBox(

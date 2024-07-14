@@ -1,73 +1,75 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:travel_app/view/hotel_booking_screen.dart';
-import 'package:travel_app/view/sign_up_screen.dart';
+import 'package:travel_app/utils/routes/router_names.dart';
 import '../../models/hotel_model.dart';
 import '../../models/room_model.dart';
-import '../../view/add_card_screen.dart';
-import '../../view/airplane_seats_choosee_screen.dart';
-import '../../view/booking_flight_screen.dart';
-import '../../view/change_password_screen.dart';
-import '../../view/check_out_screen.dart';
-import '../../view/contact_details_screen.dart';
-import '../../view/flight_detel_screen.dart';
-import '../../view/forgot_password_screen.dart';
-import '../../view/guest_and_room_booking_screen.dart';
-import '../../view/home_screen.dart';
-import '../../view/hotel_detail_screen.dart';
-import '../../view/hotel_invoice_screen.dart';
-import '../../view/hotels_screen.dart';
+import '../../view/auth/forgot_password_screen.dart';
+import '../../view/auth/login_screen.dart';
+import '../../view/auth/sign_up_screen.dart';
+import '../../view/auth/splash_screen.dart';
+import '../../view/booking/guest_and_room_booking_screen.dart';
+import '../../view/booking/hotel_booking_screen.dart';
+import '../../view/booking/hotel_detail_screen.dart';
+import '../../view/booking/hotel_invoice_screen.dart';
+import '../../view/booking/hotels_screen.dart';
+import '../../view/booking/select_date_screen.dart';
+import '../../view/booking/select_room_screen.dart';
+import '../../view/flights/ticket_stub_screen.dart';
+import '../../view/home/home_screen.dart';
 import '../../view/intro_screen.dart';
-import '../../view/login_screen.dart';
+import '../../view/payment/add_card_screen.dart';
+import '../../view/flights/airplane_seats_choosee_screen.dart';
+import '../../view/flights/booking_flight_screen.dart';
+import '../../view/payment/promo_code_screen.dart';
+import '../../view/profile/change_password_screen.dart';
+import '../../view/booking/check_out_screen.dart';
+import '../../view/flights/flight_detel_screen.dart';
 import '../../view/main_app.dart';
-import '../../view/payment_method_screen.dart';
-import '../../view/payment_screen.dart';
-import '../../view/profile_screen.dart';
-import '../../view/promo_code_screen.dart';
-import '../../view/ratiing_screen.dart';
-import '../../view/search_screen.dart';
-import '../../view/select_date_screen.dart';
-import '../../view/select_room_screen.dart';
-import '../../view/splash_screen.dart';
-import '../../view/ticket_stub_screen.dart';
-import '../../view/user_profile_sceen.dart';
+import '../../view/payment/payment_method_screen.dart';
+import '../../view/payment/payment_screen.dart';
+import '../../view/profile/contact_details_screen.dart';
+import '../../view/profile/profile_screen.dart';
+import '../../view/profile/user_profile_sceen.dart';
+import '../../view/search_and_ratings/ratiing_screen.dart';
+import '../../view/search_and_ratings/search_screen.dart';
 
 
 final Map<String, WidgetBuilder> routes = {
   // noi tong hop ca routes
-  SplashScreen.routeName: (context) => const SplashScreen(),
-  IntroScreen.routeName: (context) => const IntroScreen(),
-  MainApp.routeName: (context) => const MainApp(),
-  HomeScreen.routeName: (context) => const HomeScreen(),
-  SelectDateScreen.routeName: (context) => SelectDateScreen(),
-  GuestAndRoomBookingScreen.routeName: (context) => GuestAndRoomBookingScreen(),
-  HotelsScreen.routeName: (context) => HotelsScreen(),
-  SelectRoomScreen.routeName: (context) => SelectRoomScreen(),
-  LoginScreen.routeName: (context) => LoginScreen(),
-  SignUpScreen.routeName: (context) => SignUpScreen(),
-  ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
-  RattingScreen.routeName: (context) => RattingScreen(),
-  BookingFlightScreen.routeName: (context) => BookingFlightScreen(),
-  ProfileScreen.routeName: (context) => ProfileScreen(),
-  UserProfileScreen.routeName: (context) => UserProfileScreen(),
-  ContactDetailsScreen.routeName: (context) => ContactDetailsScreen(),
-  PromoCodeScreen.routeName: (context) => PromoCodeScreen(),
-  PaymentScreen.routeName: (context) => PaymentScreen(),
-  TicketStubScreen.routeName: (context) => TicketStubScreen(),
-  PaymentMethodScreen.routeName: (context) => PaymentMethodScreen(),
-  AddCardScreen.routeName: (context) => AddCardScreen(),
-  FlightDetailScreen.routeName: (context) => FlightDetailScreen(),
-  AirplaneSeatsChooseScreen.routeName: (context) => AirplaneSeatsChooseScreen(),
-  HotelInvoiceScreen.routeName: (context) => HotelInvoiceScreen(),
-  ChangePassWordScreen.routeName: (context) => ChangePassWordScreen(),
-  SearchScreen.routeName: (context) => SearchScreen(),
+  RouteNames.addCardScreen: (context) => AddCardScreen(),
+  RouteNames.airplaneSeatsChooseScreen: (context) => AirplaneSeatsChooseScreen(),
+  RouteNames.bookingFlightScreen: (context) => BookingFlightScreen(),
+  RouteNames.changePasswordScreen: (context) => ChangePassWordScreen(),
+  RouteNames.contactDetailsScreen: (context) => ContactDetailsScreen(),
+  RouteNames.flightDetailScreen: (context) => FlightDetailScreen(),
+  RouteNames.forgotPasswordScreen: (context) => ForgotPasswordScreen(),
+  RouteNames.guestAndRoomBookingScreen: (context) => GuestAndRoomBookingScreen(),
+  RouteNames.homeScreen: (context) => HomeScreen(),
+  RouteNames.hotelInvoiceScreen: (context) => HotelInvoiceScreen(),
+  RouteNames.hotelsScreen: (context) => HotelsScreen(),
+  RouteNames.introScreen: (context) => IntroScreen(),
+  RouteNames.loginScreen: (context) => LoginScreen(),
+  RouteNames.mainApp: (context) => MainApp(),
+  RouteNames.paymentMethodScreen: (context) => PaymentMethodScreen(),
+  RouteNames.paymentScreen: (context) => PaymentScreen(),
+  RouteNames.profileScreen: (context) => ProfileScreen(),
+  RouteNames.promoCodeScreen: (context) => PromoCodeScreen(),
+  RouteNames.rattingScreen: (context) => RattingScreen(),
+  RouteNames.searchScreen: (context) => SearchScreen(),
+  RouteNames.selectDateScreen: (context) => SelectDateScreen(),
+  RouteNames.selectRoomScreen: (context) => SelectRoomScreen(),
+  RouteNames.signUpScreen: (context) => SignUpScreen(),
+  RouteNames.splashScreen: (context) => SplashScreen(),
+  RouteNames.ticketStubScreen: (context) => TicketStubScreen(),
+  RouteNames.userProfileScreen: (context) => UserProfileScreen(),
+
 
 
 };
 
 MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
   switch (settings.name) {
-    case HotelDetailScreen.routeName:
+    case RouteNames.hotelDetailScreen:
       final HotelModel hotelModel = (settings.arguments as HotelModel);
       return MaterialPageRoute<dynamic>(
         settings: settings,
@@ -76,7 +78,7 @@ MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
         ),
       );
 
-    case CheckOutScreen.routeName:
+    case RouteNames.checkOutScreen:
       final RoomModel roomModel = (settings.arguments as RoomModel);
       return MaterialPageRoute<dynamic>(
         settings: settings,
@@ -85,7 +87,7 @@ MaterialPageRoute<dynamic>? generateRoutes(RouteSettings settings) {
         ),
       );
 
-    case HotelBookingScreen.routeName:
+    case RouteNames.hotelBookingScreen:
       return MaterialPageRoute<dynamic>(builder: (context) {
         final String? nameDestination = (settings.arguments as String?);
         return HotelBookingScreen(

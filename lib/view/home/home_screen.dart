@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/view/search_screen.dart';
+import 'package:travel_app/view/search_and_ratings/search_screen.dart';
 import 'package:travel_app/viewModel/user_viewmodel.dart';
-import '../res/core/constants/dimension_constants.dart';
-import '../res/core/constants/textstyle_ext.dart';
-import '../res/core/helpers/asset_helper.dart';
-import '../res/core/helpers/image_helper.dart';
-import '../res/widget/app_bar_container.dart';
-import 'flight_detel_screen.dart';
-import 'hotel_booking_screen.dart';
+import '../../res/core/constants/dimension_constants.dart';
+import '../../res/core/constants/textstyle_ext.dart';
+import '../../res/core/helpers/asset_helper.dart';
+import '../../res/core/helpers/image_helper.dart';
+import '../../res/widget/app_bar_container.dart';
+import '../../utils/routes/router_names.dart';
+import '../flights/flight_detel_screen.dart';
+import '../booking/hotel_booking_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-  static const String routeName = '/hotel_screen';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .pushNamed(HotelBookingScreen.routeName, arguments: name);
+            .pushNamed(RouteNames.hotelBookingScreen, arguments: name);
       },
       child: Container(
         margin: EdgeInsets.only(bottom: kDefaultPadding),
@@ -217,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onSubmitted: (String submitValue) {},
             ),
             onTap: (){
-              Navigator.pushNamed(context, SearchScreen.routeName);
+              Navigator.pushNamed(context, RouteNames.searchScreen);
             },
           ),
           SizedBox(
@@ -233,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: kDefaultIconSize,
                     ),
                     Color(0xffFE9C5E), () {
-                  Navigator.of(context).pushNamed(HotelBookingScreen.routeName);
+                  Navigator.of(context).pushNamed(RouteNames.hotelBookingScreen);
                 }, 'Hotels'),
               ),
               SizedBox(width: kDefaultPadding),
@@ -247,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Color(0xffF77777),
                     () {
 
-                      Navigator.of(context).pushNamed(FlightDetailScreen.routeName);
+                      Navigator.of(context).pushNamed(RouteNames.flightDetailScreen);
                     },
                     'Flights'),
               ),
