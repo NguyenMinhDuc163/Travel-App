@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/res/core/constants/app_urls.dart';
 import 'package:travel_app/res/core/constants/color_constants.dart';
 import 'package:travel_app/res/core/helpers/local_storage_helper.dart';
 import 'package:travel_app/utils/routes/routes.dart';
@@ -15,10 +16,10 @@ Future main() async {
 
   await Firebase.initializeApp(
       options: const FirebaseOptions(
-          apiKey: "AIzaSyBGcaswmyTpDHEglKPas9fxr5ZJahkwp7s",
-          appId: "1:183380913156:android:64773a459efaf87eda1951",
-          messagingSenderId: "183380913156",
-          projectId: "travolapp"));
+          apiKey: AppUrls.apiKey,
+          appId: AppUrls.appId,
+          messagingSenderId: AppUrls.messagingSenderId,
+          projectId: AppUrls.projectId));
 
   await Hive.initFlutter();
   await LocalStorageHelper.initLocalStorageHelper(); // khoi tao LocalStorage
