@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../data/models/user_model.dart';
-import '../../global/common/toast.dart';
+import 'package:travel_app/global/common/toast.dart';
+import 'package:travel_app/models/user_model.dart';
 
 class FirebaseAuthService {
-  FirebaseAuth _auth = FirebaseAuth.instance; // instance of firebase auth
+  final FirebaseAuth _auth = FirebaseAuth.instance; // instance of firebase auth
 
   Future<User?> signUpWithEmailAndPassWord(
       String email, String password, String userName,String phoneNum) async {
