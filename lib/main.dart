@@ -2,12 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/core/constants/color_constants.dart';
-import 'package:travel_app/core/helpers/local_storage_helper.dart';
-import 'package:travel_app/provider/UserProvider.dart';
-import 'package:travel_app/provider/hotel_booking_provider.dart';
-import 'package:travel_app/representation/screens/splash_screen.dart';
-import 'package:travel_app/routes.dart';
+import 'package:travel_app/res/core/constants/color_constants.dart';
+import 'package:travel_app/res/core/helpers/local_storage_helper.dart';
+import 'package:travel_app/utils/routes/routes.dart';
+import 'package:travel_app/view/splash_screen.dart';
+import 'package:travel_app/viewModel/user_viewmodel.dart';
+import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,8 +23,8 @@ Future main() async {
   await Hive.initFlutter();
   await LocalStorageHelper.initLocalStorageHelper(); // khoi tao LocalStorage
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => UserProvider()),
-    ChangeNotifierProvider(create: (_) => HotelBookingProvider()),
+    ChangeNotifierProvider(create: (_) => UserViewModel()),
+    ChangeNotifierProvider(create: (_) => HotelBookingViewModel()),
 
   ],
     child: const MyApp(),
