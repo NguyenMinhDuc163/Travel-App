@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/res/core/helpers/Text/review.dart';
 import 'package:travel_app/res/core/helpers/asset_helper.dart';
+import 'package:travel_app/res/core/helpers/text/review.dart';
 
 import '../../res/core/constants/dimension_constants.dart';
 import '../../res/widget/app_bar_container.dart';

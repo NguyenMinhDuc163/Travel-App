@@ -73,7 +73,7 @@ class _HotelBookingScreenState extends State<HotelBookingScreen> {
                             .any((element) => element == null)) {
 
                           setState(() {
-                            dateSelected = '${resul[0]?.getStartDate} - ${resul[1]?.getEndDate}';
+                            // dateSelected = '${resul[0]?.getStartDate} - ${resul[1]?.getEndDate}';
                             select.setDate(resul[0]!, resul[1]!);
                           });
                         }
