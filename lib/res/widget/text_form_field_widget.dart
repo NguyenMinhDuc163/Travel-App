@@ -286,7 +286,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
             sizedBoxSpace,
             Text(
               '* Required fields',
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             sizedBoxSpace,
           ],

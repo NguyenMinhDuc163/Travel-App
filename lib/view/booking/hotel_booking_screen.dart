@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/res/core/extentions/date_ext.dart';
-import 'package:travel_app/view/booking/guest_and_room_booking_screen.dart';
 import 'package:travel_app/viewModel/hotel_booking_viewmodel.dart';
 import '../../res/core/constants/dimension_constants.dart';
 import '../../res/core/helpers/asset_helper.dart';
